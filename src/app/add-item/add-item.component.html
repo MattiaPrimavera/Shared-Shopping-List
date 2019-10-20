@@ -1,0 +1,12 @@
+<form [formGroup]="addItemForm" (ngSubmit)="onSubmit()">
+  <label>
+    Title
+    <input type="text" formControlName="title">
+  </label>
+
+  <label>
+    Description
+    <input type="text" formControlName="description">
+  </label>
+  <button type="submit" [disabled]="!addItemForm.valid">Save</button>
+</form>

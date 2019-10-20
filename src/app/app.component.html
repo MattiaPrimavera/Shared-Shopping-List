@@ -1,8 +1,11 @@
 Shopping List
 <ul>
   <li *ngFor="let item of items | async">
-    {{ item.name }}
+    <p>{{ item.title }}</p>
+    <p>{{ item.description }}</p>
   </li>
 </ul>
+
+<app-add-item></app-add-item>
 
 <router-outlet></router-outlet>
