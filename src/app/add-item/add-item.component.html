@@ -1,12 +1,12 @@
-<form [formGroup]="addItemForm" (ngSubmit)="onSubmit()">
-  <label>
-    Title
-    <input type="text" formControlName="title">
-  </label>
+<div>
+  <form class="form" [formGroup]="addItemForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Title" formControlName="title">
+      </mat-form-field>
 
-  <label>
-    Description
-    <input type="text" formControlName="description">
-  </label>
-  <button type="submit" [disabled]="!addItemForm.valid">Save</button>
-</form>
+      <mat-form-field class="full-width">
+        <textarea matInput placeholder="Description" formControlName="description"></textarea>
+      </mat-form-field>
+      <button mat-button type="submit" [disabled]="!addItemForm.valid">Save</button>
+    </form>
+</div>
