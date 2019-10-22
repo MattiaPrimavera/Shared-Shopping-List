@@ -14,11 +14,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShoppingItemComponent,
+    AddItemComponent,
+    BottomSheetComponent
+  ],
+  entryComponents: [
     AddItemComponent
   ],
   imports: [
@@ -30,10 +36,12 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
     MatInputModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    MatBottomSheetModule
   ],
   providers: [
-    AngularFireDatabase
+    AngularFireDatabase,
+    BottomSheetComponent
   ],
   bootstrap: [AppComponent]
 })
