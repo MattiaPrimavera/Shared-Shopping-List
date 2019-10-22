@@ -24,7 +24,7 @@ export class AppComponent {
     this.items = itemService.list();
   }
 
-  onItemClicked(item: ShoppingItem) {
+  onItemClicked(item: any) {
     this.itemDataService.setUpdateItem(item);
     this.showUpdateItemBottomSheet();
   }

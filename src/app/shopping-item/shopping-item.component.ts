@@ -6,8 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./shopping-item.component.scss']
 })
 export class ShoppingItemComponent implements OnInit {
-  @Input() title: string;
-  @Input() description: string;
+  @Input() item: any;
   @Output() itemClicked = new EventEmitter();
 
   constructor() { }
@@ -15,11 +14,6 @@ export class ShoppingItemComponent implements OnInit {
   ngOnInit() {}
 
   onClick() {
-    const shoppingItem = {
-      title: this.title,
-      description: this.description
-    };
-
-    this.itemClicked.emit(shoppingItem);
+    this.itemClicked.emit(this.item);
   }
 }

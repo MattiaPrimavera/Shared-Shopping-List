@@ -25,18 +25,18 @@ export class DbService {
 
   addItem(shoppingItem) {
     const { title, description } = shoppingItem;
-    this.itemsRef.push({ title, description });
+    return this.itemsRef.push({ title, description });
   }
 
   async updateItem(key: string, item: ShoppingItem) {
-    this.itemsRef.update(key, { ...item });
+    return this.itemsRef.update(key, { ...item });
   }
 
   async deleteItem(key: string) {
-    this.itemsRef.remove(key);
+    return this.itemsRef.remove(key);
   }
 
   async deleteEverything() {
-    this.itemsRef.remove();
+    return this.itemsRef.remove();
   }
 }

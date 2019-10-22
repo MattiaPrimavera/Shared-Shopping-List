@@ -2,8 +2,7 @@
 <mat-list>
   <app-shopping-item *ngFor="let item of items | async"
     (itemClicked)="onItemClicked(item)"
-    [title]="item.title"
-    [description]="item.description">
+    [item]="item">
   </app-shopping-item>
 </mat-list>
 

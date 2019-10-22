@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ItemService } from '../item.service';
-import { ShoppingItem } from 'src/models/shopping-item';
 import { ItemDataService } from '../item-data.service';
 
 @Component({
@@ -11,6 +10,7 @@ import { ItemDataService } from '../item-data.service';
 })
 export class UpdateItemComponent implements OnInit, AfterViewInit {
   updateItemForm: FormGroup;
+  item: any;
 
   constructor(
     private itemService: ItemService,
@@ -26,16 +26,15 @@ export class UpdateItemComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit() {
-    const item = this.itemDataService.getUpdateItem();
-    this.updateItemForm.patchValue(item);
+    this.item = this.itemDataService.getUpdateItem();
+    this.updateItemForm.patchValue(this.item);
   }
 
-  deleteItem() {
-    const { key } = this.updateItemForm.value;
-    return this.itemService.delete(key);
+  async deleteItem() {
+    this.itemService.delete(this.item.key);
   }
 
-  updateItem() {
+  async updateItem() {
     const shoppingItem = this.updateItemForm.value;
     this.itemService.update(shoppingItem.key, shoppingItem);
   }
