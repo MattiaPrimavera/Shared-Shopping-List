@@ -5,6 +5,7 @@ import { ItemService } from './item.service';
 import { AddItemBottomSheetService } from './add-item-bottom-sheet.service';
 import { UpdateItemBottomSheetService } from './update-item-bottom-sheet.service';
 import { ItemDataService } from './item-data.service';
+import { SnackbarService } from './snackbar.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ export class AppComponent {
     itemService: ItemService,
     private addItemBottomSheet: AddItemBottomSheetService,
     private updateItemBottomSheet: UpdateItemBottomSheetService,
-    private itemDataService: ItemDataService
+    private itemDataService: ItemDataService,
+    private snackbarService: SnackbarService
   ) {
     this.items = itemService.list();
   }
@@ -30,10 +32,16 @@ export class AppComponent {
   }
 
   showUpdateItemBottomSheet() {
-    this.updateItemBottomSheet.open();
+    const updateBottomSheetRef = this.updateItemBottomSheet.open();
+    updateBottomSheetRef.afterDismissed().subscribe(isUpdateOperation => {
+      this.snackbarService.openSnackBar('Operation success', isUpdateOperation ? 'UPDATE' : 'DELETE');
+    });
   }
 
   showAddItemBottomSheet() {
-    this.addItemBottomSheet.open();
+    const addItemBottomSheet = this.addItemBottomSheet.open();
+    addItemBottomSheet.afterDismissed().subscribe(() => {
+      this.snackbarService.openSnackBar('Operation success', 'CREATE');
+    });
   }
 }

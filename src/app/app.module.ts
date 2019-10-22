@@ -20,6 +20,7 @@ import { UpdateItemComponent } from './update-item/update-item.component';
 import { AddItemBottomSheetService } from './add-item-bottom-sheet.service';
 import { UpdateItemBottomSheetService } from './update-item-bottom-sheet.service';
 import { ItemDataService } from './item-data.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ItemDataService } from './item-data.service';
     MatInputModule,
     MatButtonModule,
     MatListModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatSnackBarModule
   ],
   providers: [
     AngularFireDatabase,
