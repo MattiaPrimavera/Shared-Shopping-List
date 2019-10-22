@@ -24,8 +24,8 @@ export class DbService {
     this.itemsRef.push({ title, description });
   }
 
-  async updateItem(key: string, title: string, description: string) {
-    this.itemsRef.update(key, { title, description });
+  async updateItem(key: string, item: ShoppingItem) {
+    this.itemsRef.update(key, { ...item });
   }
 
   async deleteItem(key: string) {

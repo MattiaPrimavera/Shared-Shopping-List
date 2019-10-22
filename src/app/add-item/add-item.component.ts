@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { DbService } from '../db.service';
+import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-add-item',
@@ -13,7 +13,7 @@ export class AddItemComponent implements OnInit {
 
   addItemForm: FormGroup;
 
-  constructor(private db: DbService) {
+  constructor(private itemService: ItemService) {
     this.addItemForm = new FormGroup({
       title: new FormControl(''),
       description: new FormControl(''),
@@ -24,6 +24,6 @@ export class AddItemComponent implements OnInit {
 
   onSubmit() {
     const shoppingItem = this.addItemForm.value;
-    this.db.addItem(shoppingItem);
+    this.itemService.add(shoppingItem);
   }
 }

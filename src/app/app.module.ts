@@ -16,6 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import { ItemService } from './item.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
   ],
   providers: [
     AngularFireDatabase,
-    BottomSheetComponent
+    BottomSheetComponent,
+    ItemService
   ],
   bootstrap: [AppComponent]
 })
