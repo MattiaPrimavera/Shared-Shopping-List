@@ -1,6 +1,7 @@
 <h3 mat-subheader>Shopping List</h3>
 <mat-list>
   <app-shopping-item *ngFor="let item of items | async"
+    (itemClicked)="onItemClicked(item)"
     [title]="item.title"
     [description]="item.description">
   </app-shopping-item>

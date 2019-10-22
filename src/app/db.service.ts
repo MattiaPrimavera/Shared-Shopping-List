@@ -19,6 +19,10 @@ export class DbService {
     );
   }
 
+  getItems() {
+    return this.items;
+  }
+
   addItem(shoppingItem) {
     const { title, description } = shoppingItem;
     this.itemsRef.push({ title, description });

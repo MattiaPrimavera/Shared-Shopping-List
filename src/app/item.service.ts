@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { ShoppingItem } from 'src/models/shopping-item';
 import { Observable } from 'rxjs';
 import { DbService } from './db.service';
@@ -9,10 +8,10 @@ import { DbService } from './db.service';
 })
 export class ItemService {
   collectionName = 'items';
-  constructor(private db: AngularFireDatabase, private dbService: DbService) {}
+  constructor(private dbService: DbService) {}
 
   list(): Observable<ShoppingItem[]> {
-    return this.db.list<ShoppingItem>(this.collectionName).valueChanges();
+    return this.dbService.getItems();
   }
 
   add(item: ShoppingItem) {

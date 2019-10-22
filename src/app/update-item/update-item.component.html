@@ -1,0 +1,16 @@
+<div>
+  <form class="form" [formGroup]="updateItemForm" (ngSubmit)="updateItem()">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Title" formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <textarea matInput placeholder="Description" formControlName="description"></textarea>
+    </mat-form-field>
+
+    <div id="action-buttons">
+      <button mat-button color="secondary" (click)="deleteItem()">Delete</button>
+      <button mat-button type="submit" [disabled]="!updateItemForm.valid">Save</button>
+    </div>
+  </form>
+</div>

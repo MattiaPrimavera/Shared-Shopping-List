@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { ShoppingItem } from 'src/models/shopping-item';
-import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { ItemService } from './item.service';
+import { AddItemBottomSheetService } from './add-item-bottom-sheet.service';
+import { UpdateItemBottomSheetService } from './update-item-bottom-sheet.service';
+import { ItemDataService } from './item-data.service';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,22 @@ export class AppComponent {
   title = 'shared-shopping-list';
   items: Observable<ShoppingItem[]>;
 
-  constructor(itemService: ItemService, private addItemBottomSheet: BottomSheetComponent) {
+  constructor(
+    itemService: ItemService,
+    private addItemBottomSheet: AddItemBottomSheetService,
+    private updateItemBottomSheet: UpdateItemBottomSheetService,
+    private itemDataService: ItemDataService
+  ) {
     this.items = itemService.list();
+  }
+
+  onItemClicked(item: ShoppingItem) {
+    this.itemDataService.setUpdateItem(item);
+    this.showUpdateItemBottomSheet();
+  }
+
+  showUpdateItemBottomSheet() {
+    this.updateItemBottomSheet.open();
   }
 
   showAddItemBottomSheet() {

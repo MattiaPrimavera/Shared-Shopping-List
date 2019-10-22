@@ -15,18 +15,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { ItemService } from './item.service';
+import { UpdateItemComponent } from './update-item/update-item.component';
+import { AddItemBottomSheetService } from './add-item-bottom-sheet.service';
+import { UpdateItemBottomSheetService } from './update-item-bottom-sheet.service';
+import { ItemDataService } from './item-data.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShoppingItemComponent,
     AddItemComponent,
-    BottomSheetComponent
+    UpdateItemComponent
   ],
   entryComponents: [
-    AddItemComponent
+    AddItemComponent,
+    UpdateItemComponent
   ],
   imports: [
     BrowserModule,
@@ -42,8 +46,10 @@ import { ItemService } from './item.service';
   ],
   providers: [
     AngularFireDatabase,
-    BottomSheetComponent,
-    ItemService
+    AddItemBottomSheetService,
+    UpdateItemBottomSheetService,
+    ItemDataService,
+    ItemService,
   ],
   bootstrap: [AppComponent]
 })
