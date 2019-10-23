@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ShoppingItem } from 'src/models/shopping-item';
+import { ShoppingItem } from 'src/app/models/shopping-item';
 import { Observable } from 'rxjs';
 import { DbService } from '../database/db.service';
 
@@ -14,15 +14,15 @@ export class ItemService {
     return this.dbService.getItems();
   }
 
-  add(item: ShoppingItem) {
+  async add(item: ShoppingItem) {
     return this.dbService.addItem(item);
   }
 
-  delete(key: string) {
+  async delete(key: string) {
     return this.dbService.deleteItem(key);
   }
 
-  update(key: string, item: ShoppingItem) {
+  async update(key: string, item: ShoppingItem) {
     return this.dbService.updateItem(key, item);
   }
 }

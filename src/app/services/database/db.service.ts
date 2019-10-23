@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
-import { ShoppingItem } from 'src/models/shopping-item';
+import { ShoppingItem } from 'src/app/models/shopping-item';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class DbService {
   itemsRef: AngularFireList<ShoppingItem>;
   items: Observable<ShoppingItem[]>;
-  constructor(db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase) {
     this.itemsRef = db.list<ShoppingItem>('items');
     this.items = this.itemsRef.snapshotChanges().pipe(
       map(changes =>
@@ -23,7 +23,7 @@ export class DbService {
     return this.items;
   }
 
-  addItem(shoppingItem) {
+  async addItem(shoppingItem: ShoppingItem) {
     const { title, description } = shoppingItem;
     return this.itemsRef.push({ title, description });
   }
