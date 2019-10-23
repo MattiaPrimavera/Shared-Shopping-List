@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ItemService } from '../../../services/item/item.service';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-add-item',
@@ -16,7 +16,7 @@ export class AddItemComponent implements OnInit {
 
   constructor(
     private itemService: ItemService,
-    private bottomSheet: MatBottomSheet,
+    private bottomSheetRef: MatBottomSheetRef,
   ) {
     this.addItemForm = new FormGroup({
       title: new FormControl(''),
@@ -29,6 +29,6 @@ export class AddItemComponent implements OnInit {
   async onSubmit() {
     const shoppingItem = this.addItemForm.value;
     await this.itemService.add(shoppingItem);
-    this.bottomSheet.dismiss();
+    this.bottomSheetRef.dismiss({ error: false });
   }
 }

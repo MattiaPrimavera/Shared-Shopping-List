@@ -24,8 +24,7 @@ export class DbService {
   }
 
   async addItem(shoppingItem: ShoppingItem) {
-    const { title, description } = shoppingItem;
-    return this.itemsRef.push({ title, description });
+    return this.itemsRef.push(shoppingItem);
   }
 
   async updateItem(key: string, item: ShoppingItem) {

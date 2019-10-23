@@ -1,7 +1,17 @@
 <h3 mat-subheader>Shopping List</h3>
 <mat-list>
-  <app-shopping-item *ngFor="let item of items | async"
+  <app-shopping-item *ngFor="let item of items | async | toDoOnly "
     (itemClicked)="onItemClicked(item)"
+    (doneClicked)="onItemDone(item)"
+    [item]="item">
+  </app-shopping-item>
+</mat-list>
+
+<h3 mat-subheader>Done!</h3>
+<mat-list>
+  <app-shopping-item *ngFor="let item of items | async | doneOnly "
+    (itemClicked)="onItemClicked(item)"
+    (doneClicked)="onItemUndo(item)"
     [item]="item">
   </app-shopping-item>
 </mat-list>

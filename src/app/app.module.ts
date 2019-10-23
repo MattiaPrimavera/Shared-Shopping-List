@@ -23,13 +23,17 @@ import { UpdateItemBottomSheetService } from './ui/update-item/bottom-sheet/upda
 import { ItemService } from './services/item/item.service';
 import { ItemDataService } from './services/item-data/item-data.service';
 import { UpdateItemComponent } from './ui/update-item/component/update-item.component';
+import { DoneOnlyPipe } from './done-only.pipe';
+import { ToDoOnlyPipe } from './to-do-only.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShoppingItemComponent,
     AddItemComponent,
-    UpdateItemComponent
+    UpdateItemComponent,
+    DoneOnlyPipe,
+    ToDoOnlyPipe
   ],
   entryComponents: [
     AddItemComponent,

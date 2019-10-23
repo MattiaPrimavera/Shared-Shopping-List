@@ -34,16 +34,16 @@ export class UpdateItemComponent implements OnInit, AfterViewInit {
 
   async deleteItem() {
     await this.itemService.delete(this.item.key);
-    this.bottomSheetRef.dismiss(false);
+    this.bottomSheetRef.dismiss({ error: false, isUpdate: false });
   }
 
   async updateItem() {
     const shoppingItem = this.updateItemForm.value;
     await this.itemService.update(shoppingItem.key, shoppingItem);
-    this.dismiss(true);
+    this.dismiss({ error: false, isUpdate: true });
   }
 
-  dismiss(isUpdateOperation: boolean) {
-    this.bottomSheetRef.dismiss(isUpdateOperation);
+  dismiss(data: any) {
+    this.bottomSheetRef.dismiss(data);
   }
 }

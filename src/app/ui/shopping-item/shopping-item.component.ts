@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ShoppingItemComponent implements OnInit {
   @Input() item: any;
   @Output() itemClicked = new EventEmitter();
+  @Output() doneClicked = new EventEmitter();
 
   constructor() { }
 
@@ -15,5 +16,9 @@ export class ShoppingItemComponent implements OnInit {
 
   onClick() {
     this.itemClicked.emit(this.item);
+  }
+
+  onDoneClicked() {
+    this.doneClicked.emit(this.item);
   }
 }

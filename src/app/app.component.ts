@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { ShoppingItem } from 'src/models/shopping-item';
+import { ShoppingItem } from 'src/app/models/shopping-item';
 
 import { AddItemBottomSheetService } from './ui/add-item/bottom-sheet/add-item-bottom-sheet.service';
 import { ItemService } from './services/item/item.service';
@@ -19,31 +19,43 @@ export class AppComponent {
   items: Observable<ShoppingItem[]>;
 
   constructor(
-    itemService: ItemService,
+    private itemService: ItemService,
     private addItemBottomSheet: AddItemBottomSheetService,
     private updateItemBottomSheet: UpdateItemBottomSheetService,
     private itemDataService: ItemDataService,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
   ) {
     this.items = itemService.list();
   }
 
-  onItemClicked(item: any) {
+  onItemClicked(item: ShoppingItem) {
     this.itemDataService.setUpdateItem(item);
     this.showUpdateItemBottomSheet();
   }
 
+  onItemDone(item: ShoppingItem) {
+    this.itemService.update(item.key, { ...item, done: true });
+  }
+
+  onItemUndo(item: ShoppingItem) {
+    this.itemService.update(item.key, { ...item, done: false });
+  }
+
   showUpdateItemBottomSheet() {
     const updateBottomSheetRef = this.updateItemBottomSheet.open();
-    updateBottomSheetRef.afterDismissed().subscribe(isUpdateOperation => {
-      this.snackbarService.openSnackBar('Operation success', isUpdateOperation ? 'UPDATE' : 'DELETE');
+    updateBottomSheetRef.afterDismissed().subscribe(data => {
+      if (data && !data.error) {
+        this.snackbarService.openSnackBar('Operation success', data.isUpdate ? 'UPDATE' : 'DELETE');
+      }
     });
   }
 
   showAddItemBottomSheet() {
     const addItemBottomSheet = this.addItemBottomSheet.open();
-    addItemBottomSheet.afterDismissed().subscribe(() => {
-      this.snackbarService.openSnackBar('Operation success', 'CREATE');
+    addItemBottomSheet.afterDismissed().subscribe(data => {
+      if (data && !data.error) {
+        this.snackbarService.openSnackBar('Operation success', 'CREATE');
+      }
     });
   }
 }

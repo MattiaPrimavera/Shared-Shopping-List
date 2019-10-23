@@ -1,5 +1,7 @@
-<mat-list-item (click)="onClick()">
-  <mat-icon mat-list-icon>panorama_fish_eye</mat-icon>
-  <h4 mat-line>{{ item.title }}</h4>
-  <p mat-line> {{ item.description }}</p>
+<mat-list-item>
+  <mat-icon mat-list-icon (click)="onDoneClicked()">panorama_fish_eye</mat-icon>
+  <div (click)="onClick()">
+    <h4 mat-line >{{ item.title }}</h4>
+    <p mat-line> {{ item.description }}</p>
+  </div>
 </mat-list-item>
