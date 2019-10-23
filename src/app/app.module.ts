@@ -15,11 +15,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-import { ItemService } from './item.service';
+import { ItemService } from './services/item/item.service';
 import { UpdateItemComponent } from './update-item/update-item.component';
-import { AddItemBottomSheetService } from './add-item-bottom-sheet.service';
-import { UpdateItemBottomSheetService } from './update-item-bottom-sheet.service';
-import { ItemDataService } from './item-data.service';
+import { AddItemBottomSheetService } from './services/bottom-sheet/add-item/add-item-bottom-sheet.service';
+import { UpdateItemBottomSheetService } from './services/bottom-sheet/update-item/update-item-bottom-sheet.service';
+import { ItemDataService } from './services/item-data/item-data.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({

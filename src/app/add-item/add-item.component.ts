@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ItemService } from '../item.service';
+import { ItemService } from '../services/item/item.service';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 
 @Component({
