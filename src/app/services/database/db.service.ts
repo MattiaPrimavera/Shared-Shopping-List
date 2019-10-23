@@ -39,4 +39,13 @@ export class DbService {
   async deleteEverything() {
     return this.itemsRef.remove();
   }
+
+  /**
+   * Return objects matching the `key equals value` query
+   * @param key model property name
+   * @param value model property value
+   */
+  query(key, value): AngularFireList<ShoppingItem> {
+    return this.db.list<ShoppingItem>('/items', ref => ref.orderByChild(key).equalTo(value));
+  }
 }
