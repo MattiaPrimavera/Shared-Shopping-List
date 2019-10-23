@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { ShoppingItem } from 'src/models/shopping-item';
+
+import { AddItemBottomSheetService } from './ui/add-item/bottom-sheet/add-item-bottom-sheet.service';
 import { ItemService } from './services/item/item.service';
-import { AddItemBottomSheetService } from './services/bottom-sheet/add-item/add-item-bottom-sheet.service';
-import { UpdateItemBottomSheetService } from './services/bottom-sheet/update-item/update-item-bottom-sheet.service';
 import { ItemDataService } from './services/item-data/item-data.service';
 import { SnackbarService } from './services/snackbar/snackbar.service';
+import { UpdateItemBottomSheetService } from './ui/update-item/bottom-sheet/update-item-bottom-sheet.service';
 
 @Component({
   selector: 'app-root',

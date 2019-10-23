@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import { AddItemComponent } from '../../../add-item/add-item.component';
+import { AddItemComponent } from '../component/add-item.component';
 
 @Injectable({
   providedIn: 'root'

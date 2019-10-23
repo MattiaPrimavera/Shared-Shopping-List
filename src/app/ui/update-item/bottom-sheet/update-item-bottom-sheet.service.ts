@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import { UpdateItemComponent } from '../../../update-item/update-item.component';
-import { ItemDataService } from '../../item-data/item-data.service';
+import { UpdateItemComponent } from '../component/update-item.component';
+import { ItemDataService } from '../../../services/item-data/item-data.service';
 
 @Injectable({
   providedIn: 'root'
