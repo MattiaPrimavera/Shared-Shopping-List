@@ -1,20 +1,24 @@
 <h3 mat-subheader>Shopping List</h3>
-<mat-list>
-  <app-shopping-item *ngFor="let item of items | async | toDoOnly "
-    (itemClicked)="onItemClicked(item)"
-    (doneClicked)="onItemDone(item)"
-    [item]="item">
-  </app-shopping-item>
-</mat-list>
+<div *ngIf="items | async as shoppingList">
+  <mat-list @list>
+    <app-shopping-item *ngFor="let item of shoppingList | toDoOnly; trackBy: trackShoppingItem"
+      (itemClicked)="onItemClicked(item)"
+      (doneClicked)="onItemDone(item)"
+      [item]="item">
+    </app-shopping-item>
+  </mat-list>
+</div>
 
 <h3 mat-subheader>Done!</h3>
-<mat-list>
-  <app-shopping-item *ngFor="let item of items | async | doneOnly "
-    (itemClicked)="onItemClicked(item)"
-    (doneClicked)="onItemUndo(item)"
-    [item]="item">
-  </app-shopping-item>
-</mat-list>
+<div *ngIf="items | async as shoppingList">
+  <mat-list @list>
+    <app-shopping-item *ngFor="let item of shoppingList | doneOnly; trackBy: trackShoppingItem"
+      (itemClicked)="onItemClicked(item)"
+      (doneClicked)="onItemUndo(item)"
+      [item]="item">
+    </app-shopping-item>
+  </mat-list>
+</div>
 
 <div class="fab-button-row">
   <button mat-fab color="primary" (click)="showAddItemBottomSheet()">
