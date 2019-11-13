@@ -30,6 +30,7 @@ import { ShoppingComponent } from './shopping/shopping.component';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { GetUserUidFormComponent } from './get-user-uid-form/get-user-uid-form.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FriendsService } from './services/friends/friends.service';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     UpdateItemBottomSheetService,
     ItemDataService,
     ItemService,
+    FriendsService
   ],
   bootstrap: [AppComponent]
 })

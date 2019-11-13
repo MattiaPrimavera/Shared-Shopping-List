@@ -1,7 +1,7 @@
 
 <div *ngIf="authService.user | async as user; else showLogin">
     <h1>Hello</h1>
-    <p>{{ user.uid }}!</p>
+    <p>{{ user.uid }}</p>
     <button (click)="authService.signOut()">Logout</button>
     <button (click)="joinShoppingList()">Join</button>
     <button (click)="createShoppingList()">Create</button>

@@ -17,8 +17,9 @@ export class AuthService {
     private db: DbService
   ) {
     this.afAuth.user.subscribe(user => {
-      console.log('User found: ', user)
+      console.log('User', user)
       if (user) {
+        console.log('User found: ', user.uid)
         this.store.setState({
           isAuth: true,
           uid: user.uid
@@ -34,7 +35,6 @@ export class AuthService {
   async signInAnonymously() {
     try {
       await this.afAuth.auth.signInAnonymously()
-      this.router.navigate(['shopping'])
     } catch (error) {
       console.log(`Error code ${error.code} message: ${error.message}`)
     }

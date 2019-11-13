@@ -22,6 +22,7 @@ export class DbService {
    * @param uid Firebase user uid
    */
   setupDatabase(uid: string) {
+    console.log(`Fetching items/${uid}`)
     this.uid = uid;
     this.itemsRef = this.db.list<ShoppingItem>(`items/${uid}`);
     this.items = this.itemsRef.snapshotChanges().pipe(
