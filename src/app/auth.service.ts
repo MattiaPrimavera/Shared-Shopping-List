@@ -23,8 +23,6 @@ export class AuthService {
           isAuth: true,
           uid: user.uid
         })
-
-        this.db.setupDatabase(user.uid)
       } else this.store.setState(null)
     })
   }

@@ -28,6 +28,8 @@ import { ToDoOnlyPipe } from './pipes/to-do-only.pipe';
 import { LoginComponent } from './login/login.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { GetUserUidFormComponent } from './get-user-uid-form/get-user-uid-form.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -38,11 +40,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
     DoneOnlyPipe,
     ToDoOnlyPipe,
     LoginComponent,
-    ShoppingComponent
+    ShoppingComponent,
+    GetUserUidFormComponent,
   ],
   entryComponents: [
     AddItemComponent,
-    UpdateItemComponent
+    UpdateItemComponent,
+    GetUserUidFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +54,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
     AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatDialogModule,
     MatIconModule,
     MatInputModule,
     MatButtonModule,
