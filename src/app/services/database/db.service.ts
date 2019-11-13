@@ -8,10 +8,22 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DbService {
+  uid: string;
   itemsRef: AngularFireList<ShoppingItem>;
   items: Observable<ShoppingItem[]>;
+  userUid: string;
+
   constructor(private db: AngularFireDatabase) {
-    this.itemsRef = db.list<ShoppingItem>('items');
+  }
+
+  /**
+   * Get firebase database references once the user
+   * is logged in and its uid is known
+   * @param uid Firebase user uid
+   */
+  setupDatabase(uid: string) {
+    this.uid = uid;
+    this.itemsRef = this.db.list<ShoppingItem>(`items/${uid}`);
     this.items = this.itemsRef.snapshotChanges().pipe(
       map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
@@ -45,6 +57,6 @@ export class DbService {
    * @param value model property value
    */
   query(key, value): AngularFireList<ShoppingItem> {
-    return this.db.list<ShoppingItem>('/items', ref => ref.orderByChild(key).equalTo(value));
+    return this.db.list<ShoppingItem>(`/items/${this.uid}`, ref => ref.orderByChild(key).equalTo(value));
   }
 }
