@@ -23,8 +23,11 @@ import { UpdateItemBottomSheetService } from './ui/update-item/bottom-sheet/upda
 import { ItemService } from './services/item/item.service';
 import { ItemDataService } from './services/item-data/item-data.service';
 import { UpdateItemComponent } from './ui/update-item/component/update-item.component';
-import { DoneOnlyPipe } from './done-only.pipe';
-import { ToDoOnlyPipe } from './to-do-only.pipe';
+import { DoneOnlyPipe } from './pipes/done-only.pipe';
+import { ToDoOnlyPipe } from './pipes/to-do-only.pipe';
+import { LoginComponent } from './login/login.component';
+import { ShoppingComponent } from './shopping/shopping.component';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { ToDoOnlyPipe } from './to-do-only.pipe';
     AddItemComponent,
     UpdateItemComponent,
     DoneOnlyPipe,
-    ToDoOnlyPipe
+    ToDoOnlyPipe,
+    LoginComponent,
+    ShoppingComponent
   ],
   entryComponents: [
     AddItemComponent,
@@ -54,6 +59,7 @@ import { ToDoOnlyPipe } from './to-do-only.pipe';
   ],
   providers: [
     AngularFireDatabase,
+    AngularFireAuth,
     AddItemBottomSheetService,
     UpdateItemBottomSheetService,
     ItemDataService,
