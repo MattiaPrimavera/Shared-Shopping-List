@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { User } from 'firebase';
 import { Observable } from 'rxjs';
 import { StoreService } from './store.service';
-import { DbService } from './services/database/db.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,6 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private router: Router,
     private store: StoreService,
-    private db: DbService
   ) {
     this.afAuth.user.subscribe(user => {
       console.log('User', user)

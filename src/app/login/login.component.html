@@ -1,12 +1,3 @@
 
-<div *ngIf="authService.user | async as user; else showLogin">
-    <h1>Hello</h1>
-    <p>{{ user.uid }}</p>
-    <button (click)="authService.signOut()">Logout</button>
-    <button (click)="joinShoppingList()">Join</button>
-    <button (click)="createShoppingList()">Create</button>
-</div>
-<ng-template #showLogin>
-    <h1>Login</h1>
-    <button (click)="authService.signInAnonymously()">Login</button>
-</ng-template>
+<h1>Login</h1>
+<button (click)="signInAnonymously()">Login</button>

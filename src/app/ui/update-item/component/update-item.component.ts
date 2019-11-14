@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ItemService } from '../../../services/item/item.service';
+import { ItemsService } from '../../../services/database/items.service';
 import { ItemDataService } from '../../../services/item-data/item-data.service';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 
@@ -14,7 +14,7 @@ export class UpdateItemComponent implements OnInit, AfterViewInit {
   item: any;
 
   constructor(
-    private itemService: ItemService,
+    private itemsService: ItemsService,
     private itemDataService: ItemDataService,
     private bottomSheetRef: MatBottomSheetRef
   ) {
@@ -33,13 +33,13 @@ export class UpdateItemComponent implements OnInit, AfterViewInit {
   }
 
   async deleteItem() {
-    await this.itemService.delete(this.item.key);
+    await this.itemsService.delete(this.item.key);
     this.bottomSheetRef.dismiss({ error: false, isUpdate: false });
   }
 
   async updateItem() {
     const shoppingItem = this.updateItemForm.value;
-    await this.itemService.update(shoppingItem.key, shoppingItem);
+    await this.itemsService.update(shoppingItem);
     this.dismiss({ error: false, isUpdate: true });
   }
 
