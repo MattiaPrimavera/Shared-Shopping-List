@@ -33,6 +33,7 @@ import { environment } from '../environments/environment';
 import { ItemDataService } from './services/item-data/item-data.service';
 import { DoneOnlyPipe } from './pipes/done-only.pipe';
 import { ToDoOnlyPipe } from './pipes/to-do-only.pipe';
+import { InviteUserComponent } from './ui/modals/invite-user/invite-user.component';
 
 @NgModule({
   declarations: [
@@ -45,11 +46,13 @@ import { ToDoOnlyPipe } from './pipes/to-do-only.pipe';
     LoginComponent,
     ShoppingComponent,
     GetUserUidFormComponent,
+    InviteUserComponent,
   ],
   entryComponents: [
     AddItemComponent,
     UpdateItemComponent,
     GetUserUidFormComponent,
+    InviteUserComponent
   ],
   imports: [
     BrowserModule,

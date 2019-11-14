@@ -14,6 +14,7 @@ import { FriendsService } from '../../../services/database/friends/friends.servi
 import { MatDialog } from '@angular/material/dialog';
 import { GetUserUidFormComponent } from '../../modals/get-user-uid-form/get-user-uid-form.component';
 import { StoreService } from '../../../services/store/store.service';
+import { InviteUserComponent } from '../../modals/invite-user/invite-user.component';
 
 @Component({
   animations: [
@@ -132,5 +133,21 @@ export class ShoppingComponent implements OnInit {
 
   prevStep() {
     this.step--;
+  }
+
+  openMyShoppingList() {
+    const { uid } = this.store.getState()
+    this.itemsService.setupDatabase(uid)
+    this.snackbarService.openSnackBar('Back to my shopping list', 'OPEN');
+  }
+
+  async deleteAll() {
+    await this.itemsService.deleteAll()
+    this.snackbarService.openSnackBar('Shopping list cleared', 'DELETE');
+  }
+
+  async inviteUser() {
+    const dialogRef = this.openDialog('Join shopping', InviteUserComponent)
+    await dialogRef.afterClosed().toPromise()
   }
 }
