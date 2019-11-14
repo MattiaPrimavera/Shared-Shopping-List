@@ -34,6 +34,7 @@ import { ItemDataService } from './services/item-data/item-data.service';
 import { DoneOnlyPipe } from './pipes/done-only.pipe';
 import { ToDoOnlyPipe } from './pipes/to-do-only.pipe';
 import { InviteUserComponent } from './ui/modals/invite-user/invite-user.component';
+import { QRCodeModule, QRCodeComponent } from 'angular2-qrcode';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { InviteUserComponent } from './ui/modals/invite-user/invite-user.compone
     AddItemComponent,
     UpdateItemComponent,
     GetUserUidFormComponent,
-    InviteUserComponent
+    InviteUserComponent,
+    QRCodeComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,8 @@ import { InviteUserComponent } from './ui/modals/invite-user/invite-user.compone
     MatMenuModule,
     MatBottomSheetModule,
     MatSnackBarModule,
-    MatToolbarModule
+    MatToolbarModule,
+    QRCodeModule
   ],
   providers: [
     AngularFireDatabase,
