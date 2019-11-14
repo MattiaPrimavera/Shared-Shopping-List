@@ -25,24 +25,4 @@ export class ItemsService extends BaseService<ShoppingItem> {
     this.uid = uid;
     this.ref = this.db.list<ShoppingItem>(`items/${uid}`);
   }
-
-  getItems() {
-    return this.list()
-  }
-
-  async addItem(shoppingItem: ShoppingItem) {
-    return this.add(shoppingItem);
-  }
-
-  async updateItem(key: string, item: ShoppingItem) {
-    return this.update(item);
-  }
-
-  async deleteItem(key: string) {
-    return this.delete(key);
-  }
-
-  async deleteEverything() {
-    return this.deleteAll();
-  }
 }
