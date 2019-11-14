@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { User } from 'firebase';
 import { Observable } from 'rxjs';
-import { StoreService } from './store.service';
+import { StoreService } from '../store/store.service';
 
 @Injectable({
   providedIn: 'root'

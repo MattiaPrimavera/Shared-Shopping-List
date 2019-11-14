@@ -1,9 +1,9 @@
 import { IBaseService } from "./ibase-service";
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
-import { IBaseEntity } from "./ibase-entity";
+import { IBaseEntity } from "../ibase-entity";
 import { Observable } from "rxjs";
 import { map } from 'rxjs/operators';
-import { StoreService } from 'src/app/store.service';
+import { StoreService } from 'src/app/services/store/store.service';
 import { ShoppingItem } from 'src/app/models/shopping-item';
 
 export abstract class BaseService<T extends IBaseEntity> implements IBaseService<T> {

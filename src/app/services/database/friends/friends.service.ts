@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
-import { StoreService } from 'src/app/store.service';
+import { StoreService } from 'src/app/services/store/store.service';
 
 interface Friend {
   uid: string

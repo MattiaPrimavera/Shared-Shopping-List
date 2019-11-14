@@ -13,21 +13,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { AddItemComponent } from './ui/add-item/component/add-item.component';
-import { ShoppingItemComponent } from './ui/shopping-item/shopping-item.component';
+import { AddItemComponent } from './ui/components/add-item/component/add-item.component';
+import { ShoppingItemComponent } from './ui/components/shopping-item/shopping-item.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { AddItemBottomSheetService } from './ui/add-item/bottom-sheet/add-item-bottom-sheet.service';
-import { UpdateItemBottomSheetService } from './ui/update-item/bottom-sheet/update-item-bottom-sheet.service';
+import { AddItemBottomSheetService } from './ui/components/add-item/bottom-sheet/add-item-bottom-sheet.service';
+import { UpdateItemBottomSheetService } from './ui/components/update-item/bottom-sheet/update-item-bottom-sheet.service';
 import { ItemDataService } from './services/item-data/item-data.service';
-import { UpdateItemComponent } from './ui/update-item/component/update-item.component';
+import { UpdateItemComponent } from './ui/components/update-item/component/update-item.component';
 import { DoneOnlyPipe } from './pipes/done-only.pipe';
 import { ToDoOnlyPipe } from './pipes/to-do-only.pipe';
-import { LoginComponent } from './login/login.component';
-import { ShoppingComponent } from './shopping/shopping.component';
+import { LoginComponent } from './ui/pages/login/login.component';
+import { ShoppingComponent } from './ui/pages/shopping/shopping.component';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { GetUserUidFormComponent } from './get-user-uid-form/get-user-uid-form.component';
+import { GetUserUidFormComponent } from './ui/modals/get-user-uid-form/get-user-uid-form.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({

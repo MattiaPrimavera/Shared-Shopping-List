@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { ShoppingItem } from 'src/app/models/shopping-item';
-import { BaseService } from './base-service';
-import { StoreService } from 'src/app/store.service';
+import { BaseService } from '../base-service/base-service';
+import { StoreService } from 'src/app/services/store/store.service';
 
 @Injectable({
   providedIn: 'root'

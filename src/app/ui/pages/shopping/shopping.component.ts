@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, query, stagger, animateChild } from '@angular/animations';
-import { ShoppingItem } from '../models/shopping-item';
+import { ShoppingItem } from '../../../models/shopping-item';
 import { Observable } from 'rxjs';
-import { ItemsService } from '../services/database/items.service';
-import { AddItemBottomSheetService } from '../ui/add-item/bottom-sheet/add-item-bottom-sheet.service';
-import { UpdateItemBottomSheetService } from '../ui/update-item/bottom-sheet/update-item-bottom-sheet.service';
-import { ItemDataService } from '../services/item-data/item-data.service';
-import { SnackbarService } from '../services/snackbar/snackbar.service';
-import { AuthService } from '../auth.service';
+import { ItemsService } from '../../../services/database/items/items.service';
+import { AddItemBottomSheetService } from '../../components/add-item/bottom-sheet/add-item-bottom-sheet.service';
+import { UpdateItemBottomSheetService } from '../../components/update-item/bottom-sheet/update-item-bottom-sheet.service';
+import { ItemDataService } from '../../../services/item-data/item-data.service';
+import { SnackbarService } from '../../../services/snackbar/snackbar.service';
+import { AuthService } from '../../../services/auth/auth.service';
 import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { FriendsService } from '../services/database/friends/friends.service';
+import { FriendsService } from '../../../services/database/friends/friends.service';
 import { MatDialog } from '@angular/material/dialog';
-import { GetUserUidFormComponent } from '../get-user-uid-form/get-user-uid-form.component';
-import { StoreService } from '../store.service';
+import { GetUserUidFormComponent } from '../../modals/get-user-uid-form/get-user-uid-form.component';
+import { StoreService } from '../../../services/store/store.service';
 
 @Component({
   animations: [
