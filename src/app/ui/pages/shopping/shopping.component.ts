@@ -30,6 +30,7 @@ import { StoreService } from '../../../services/store/store.service';
 export class ShoppingComponent implements OnInit {
   title = 'shared-shopping-list';
   items: Observable<ShoppingItem[]>;
+  step = 0;
 
   uid: string
   action: string
@@ -119,5 +120,17 @@ export class ShoppingComponent implements OnInit {
 
   trackShoppingItem(item) {
     return item ? item.key : undefined;
+  }
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
   }
 }

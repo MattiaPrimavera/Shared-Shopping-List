@@ -29,46 +29,47 @@
 </div>
 
 
-<div *ngIf="items | async as shoppingList">
-  <mat-expansion-panel (opened)="panelOpenState = true"
-                      (closed)="panelOpenState = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Buy
-      </mat-panel-title>
-      <mat-panel-description>
-          {{shoppingList.length }}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <mat-list @list>
-      <app-shopping-item *ngFor="let item of shoppingList | toDoOnly; trackBy: trackShoppingItem"
-        (itemClicked)="onItemClicked(item)"
-        (doneClicked)="onItemDone(item)"
-        [item]="item">
-      </app-shopping-item>
-    </mat-list>
-  </mat-expansion-panel>
-</div>
-
-<div *ngIf="items | async as shoppingList">
-  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-      Done
-      </mat-panel-title>
-      <mat-panel-description>
-      {{shoppingList.length }}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <mat-list @list>
-        <app-shopping-item *ngFor="let item of shoppingList | doneOnly; trackBy: trackShoppingItem"
+<mat-accordion class="example-headers-align">
+  <div *ngIf="items | async as shoppingList">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Buy
+        </mat-panel-title>
+        <mat-panel-description>
+            {{(shoppingList | toDoOnly).length }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list @list>
+        <app-shopping-item *ngFor="let item of shoppingList | toDoOnly; trackBy: trackShoppingItem"
           (itemClicked)="onItemClicked(item)"
-          (doneClicked)="onItemUndo(item)"
+          (doneClicked)="onItemDone(item)"
           [item]="item">
         </app-shopping-item>
       </mat-list>
     </mat-expansion-panel>
-</div>
+  </div>
+
+  <div *ngIf="items | async as shoppingList">
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+        Done
+        </mat-panel-title>
+        <mat-panel-description>
+        {{(shoppingList | doneOnly).length }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list @list>
+          <app-shopping-item *ngFor="let item of shoppingList | doneOnly; trackBy: trackShoppingItem"
+            (itemClicked)="onItemClicked(item)"
+            (doneClicked)="onItemUndo(item)"
+            [item]="item">
+          </app-shopping-item>
+        </mat-list>
+      </mat-expansion-panel>
+  </div>
+</mat-accordion>
 
 <div class="fab-button-row">
   <button mat-fab color="primary" (click)="showAddItemBottomSheet()">
