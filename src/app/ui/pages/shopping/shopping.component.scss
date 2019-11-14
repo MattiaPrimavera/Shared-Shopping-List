@@ -5,3 +5,9 @@
 .toolbar-spacer {
     flex: 1 1 auto;
 }
+
+.fab-button-row button {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}

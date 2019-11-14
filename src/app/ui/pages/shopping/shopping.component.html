@@ -2,15 +2,30 @@
   <mat-toolbar-row>
     <span>Shopping List</span>
     <span class="toolbar-spacer"></span>
-    <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="heart icon">favorite</mat-icon>
-    <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="delete icon">delete</mat-icon>
+    <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="heart icon">delete</mat-icon>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>person_add</mat-icon>
+          <span>Invite</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>group</mat-icon>
+          <span>Join</span>
+        </button>
+        <button mat-menu-item (click)="authService.signOut()">
+          <mat-icon>directions_run</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <div *ngIf="authService.user | async as user">
   <h1>Hello</h1>
   <p>{{ user.uid }}</p>
-  <button (click)="authService.signOut()">Logout</button>
   <button (click)="joinShoppingList()">Join</button>
 </div>
 
@@ -37,6 +52,6 @@
 
 <div class="fab-button-row">
   <button mat-fab color="primary" (click)="showAddItemBottomSheet()">
-    new
+      <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="delete icon">add_shopping_cart</mat-icon>
   </button>
 </div>

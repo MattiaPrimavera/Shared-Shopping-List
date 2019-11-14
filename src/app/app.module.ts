@@ -8,11 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule, MatCheckbox } from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu'
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar'
 
@@ -61,6 +62,7 @@ import { ToDoOnlyPipe } from './pipes/to-do-only.pipe';
     MatInputModule,
     MatButtonModule,
     MatListModule,
+    MatMenuModule,
     MatBottomSheetModule,
     MatSnackBarModule,
     MatToolbarModule
