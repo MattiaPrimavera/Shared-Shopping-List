@@ -50,38 +50,32 @@ export class ShoppingComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Shopping component constructor')
     this.items = this.route.paramMap.pipe(
       switchMap(params => {
         this.uid = params.get('uid');
         this.itemsService.setupDatabase(this.uid)
-
-        const loggedInUserUid = this.store.getState().uid
-        this.friendsService.setupDatabase(loggedInUserUid)
         return this.itemsService.list()
       })
     );
   }
 
-  createShoppingList() {
-    const dialogRef = this.openDialog('Create shopping', GetUserUidFormComponent)
-    dialogRef.afterClosed().subscribe(inviteUserUid => {
-      console.log(`[shopping] Inviting friend ${inviteUserUid}`)
-      if (inviteUserUid) {
-        this.friendsService.save({ uid: inviteUserUid })
-      }
-    });
-  }
-
-  joinShoppingList() {
+  async joinShoppingList() {
     const dialogRef = this.openDialog('Join shopping', GetUserUidFormComponent)
-    dialogRef.afterClosed().subscribe(uid => {
-      if (uid) {
+    const uid = await dialogRef.afterClosed().toPromise()
+    console.log(`[shopping] joining ${uid}`)
+    if (uid) {
+      try {
+        const loggedInUserUid = this.store.getState().uid
+        this.friendsService.setupDatabase(loggedInUserUid)
+        await this.friendsService.save({ uid })
         this.itemsService.setupDatabase(uid)
         this.items = this.itemsService.list()
-        console.log(`[shopping] Joining list ${uid}`);
+        console.log(`[shopping] Opening shopping list ${uid}`);
+      } catch (err) {
+        console.error('[shopping] join', err)
+        this.snackbarService.openSnackBar('Operation failed', 'JOIN');
       }
-    });
+    }
   }
 
   openDialog(title: string, modalClass: any): any {
@@ -124,9 +118,6 @@ export class ShoppingComponent implements OnInit {
   }
 
   trackShoppingItem(item) {
-    console.log(item);
     return item ? item.key : undefined;
   }
-
-  inviteUser() {}
 }
