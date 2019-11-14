@@ -66,5 +66,4 @@ export abstract class BaseService<T extends IBaseEntity> implements IBaseService
   query(key, value): AngularFireList<ShoppingItem> {
     return this.db.list<ShoppingItem>(`/${this.path}/${this.uid}`, ref => ref.orderByChild(key).equalTo(value));
   }
-
 }

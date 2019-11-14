@@ -15,9 +15,9 @@ export class AuthService {
     private store: StoreService,
   ) {
     this.afAuth.user.subscribe(user => {
-      console.log('User', user)
+      console.log('[auth.service] User', user)
       if (user) {
-        console.log('User found: ', user.uid)
+        console.log(`[auth.service] uid ${user.uid}`)
         this.store.setState({
           isAuth: true,
           uid: user.uid
@@ -34,13 +34,13 @@ export class AuthService {
     try {
       await this.afAuth.auth.signInAnonymously()
     } catch (error) {
-      console.log(`Error code ${error.code} message: ${error.message}`)
+      console.log(`[auth.service] Error code ${error.code} message: ${error.message}`)
     }
   }
 
   async signOut() {
     await this.afAuth.auth.signOut()
-    console.log('Logout successful')
+    console.log('[auth.service] Logout successful')
     this.router.navigate(['/'])
   }
 }
