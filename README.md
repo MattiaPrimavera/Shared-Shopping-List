@@ -29,3 +29,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+# Resources 
+
+- [CSS loaders](https://freefrontend.com/css-loaders/)
+- [Create a loading screen for Angular 7 apps](https://nezhar.com/blog/create-a-loading-screen-for-angular-apps/)
+- [🎨 How To Style Angular Application Loading With Angular CLI Like a Boss 😎](https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)
