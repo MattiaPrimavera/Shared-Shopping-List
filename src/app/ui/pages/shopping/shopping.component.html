@@ -1,34 +1,9 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>Shopping List</span>
-    <span class="toolbar-spacer"></span>
-    <button mat-icon-button (click)="openMyShoppingList()">
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button (click)="deleteAll()">
-      <mat-icon>delete</mat-icon>
-    </button>
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="inviteUser()">
-          <mat-icon>person_add</mat-icon>
-          <span>Invite</span>
-        </button>
-        <button mat-menu-item (click)="joinShoppingList()">
-          <mat-icon>group</mat-icon>
-          <span>Join</span>
-        </button>
-        <button mat-menu-item (click)="authService.signOut()">
-          <mat-icon>directions_run</mat-icon>
-          <span>Logout</span>
-        </button>
-      </mat-menu>
-  </mat-toolbar-row>
-</mat-toolbar>
+<app-menu-toolbar
+  (menuAction)="menuAction($event)"
+  (toolbarAction)="toolbarAction($event)">
+</app-menu-toolbar>
 
-<mat-accordion class="example-headers-align">
+<mat-accordion class="accordion">
   <div *ngIf="items | async as shoppingList">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
@@ -72,6 +47,6 @@
 
 <div class="fab-button-row">
   <button mat-fab color="primary" (click)="showAddItemBottomSheet()">
-      <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="delete icon">add_shopping_cart</mat-icon>
+      <mat-icon class="fab-icon" aria-hidden="false" aria-label="delete icon">add_shopping_cart</mat-icon>
   </button>
 </div>

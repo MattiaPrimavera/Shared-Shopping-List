@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { trigger, transition, query, stagger, animateChild } from '@angular/animations';
 import { ShoppingItem } from '../../../models/shopping-item';
 import { Observable } from 'rxjs';
@@ -15,6 +15,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { GetUserUidFormComponent } from '../../modals/get-user-uid-form/get-user-uid-form.component';
 import { StoreService } from '../../../services/store/store.service';
 import { InviteUserComponent } from '../../modals/invite-user/invite-user.component';
+import { MenuAction } from '../../components/menu-toolbar/actions/menu';
+import { ToolbarAction } from '../../components/menu-toolbar/actions/toolbar';
 
 @Component({
   animations: [
@@ -149,5 +151,36 @@ export class ShoppingComponent implements OnInit {
   async inviteUser() {
     const dialogRef = this.openDialog('Join shopping', InviteUserComponent)
     await dialogRef.afterClosed().toPromise()
+  }
+
+  toolbarAction($toolbarAction) {
+    console.log('[shopping] Toolbar action: ', $toolbarAction)
+    switch($toolbarAction) {
+      case ToolbarAction.deleteAll:
+        this.deleteAll()
+        break
+      case ToolbarAction.openMyShoppingList:
+        this.openMyShoppingList()
+        break
+      default:
+        break
+    }
+  }
+
+  menuAction($menuAction) {
+    console.log('[shopping] Menu action: ', $menuAction)
+    switch($menuAction) {
+      case MenuAction.inviteUser:
+        this.inviteUser()
+        break;
+      case MenuAction.joinShoppingList:
+        this.joinShoppingList()
+        break
+      case MenuAction.signOut:
+        this.authService.signOut()
+        break
+      default:
+        break
+    }
   }
 }

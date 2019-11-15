@@ -35,6 +35,8 @@ import { DoneOnlyPipe } from './pipes/done-only.pipe';
 import { ToDoOnlyPipe } from './pipes/to-do-only.pipe';
 import { InviteUserComponent } from './ui/modals/invite-user/invite-user.component';
 import { QRCodeModule, QRCodeComponent } from 'angular2-qrcode';
+import { MenuToolbarComponent } from './ui/components/menu-toolbar/toolbar/toolbar.component';
+import { MenuComponent } from './ui/components/menu-toolbar/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { QRCodeModule, QRCodeComponent } from 'angular2-qrcode';
     ShoppingComponent,
     GetUserUidFormComponent,
     InviteUserComponent,
+    MenuToolbarComponent,
+    MenuComponent,
   ],
   entryComponents: [
     AddItemComponent,

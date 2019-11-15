@@ -1,0 +1,18 @@
+<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="inviteUser()">
+        <mat-icon>person_add</mat-icon>
+        <span>Invite</span>
+    </button>
+    <button mat-menu-item (click)="joinShoppingList()">
+        <mat-icon>group</mat-icon>
+        <span>Join</span>
+    </button>
+    <button mat-menu-item (click)="signOut()">
+        <mat-icon>directions_run</mat-icon>
+        <span>Logout</span>
+    </button>
+</mat-menu>
