@@ -24,7 +24,6 @@ import { AddItemBottomSheetService } from './ui/components/add-item/bottom-sheet
 import { UpdateItemBottomSheetService } from './ui/components/update-item/bottom-sheet/update-item-bottom-sheet.service';
 import { UpdateItemComponent } from './ui/components/update-item/component/update-item.component';
 import { GetUserUidFormComponent } from './ui/modals/get-user-uid-form/get-user-uid-form.component';
-import { LoginComponent } from './ui/pages/login/login.component';
 import { ShoppingComponent } from './ui/pages/shopping/shopping.component';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +36,7 @@ import { InviteUserComponent } from './ui/modals/invite-user/invite-user.compone
 import { QRCodeModule, QRCodeComponent } from 'angular2-qrcode';
 import { MenuToolbarComponent } from './ui/components/menu-toolbar/toolbar/toolbar.component';
 import { MenuComponent } from './ui/components/menu-toolbar/menu/menu.component';
+import { LoadingScreenComponent } from './ui/components/loading-screen/loading-screen.component';
 
 @NgModule({
   declarations: [
@@ -46,12 +46,12 @@ import { MenuComponent } from './ui/components/menu-toolbar/menu/menu.component'
     UpdateItemComponent,
     DoneOnlyPipe,
     ToDoOnlyPipe,
-    LoginComponent,
     ShoppingComponent,
     GetUserUidFormComponent,
     InviteUserComponent,
     MenuToolbarComponent,
     MenuComponent,
+    LoadingScreenComponent,
   ],
   entryComponents: [
     AddItemComponent,

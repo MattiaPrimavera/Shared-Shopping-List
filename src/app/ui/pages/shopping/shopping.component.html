@@ -4,7 +4,10 @@
 </app-menu-toolbar>
 
 <mat-accordion class="accordion">
-  <div *ngIf="items | async as shoppingList">
+  <ng-template #loading>
+      <app-loading-screen></app-loading-screen>
+  </ng-template>
+  <div *ngIf="items | async as shoppingList; else loading">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>

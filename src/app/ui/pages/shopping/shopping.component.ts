@@ -54,13 +54,18 @@ export class ShoppingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.items = this.route.paramMap.pipe(
-      switchMap(params => {
-        this.uid = params.get('uid');
+    this.items = this.signInAnonymously().pipe(
+      switchMap(user => {
+        this.uid = user.uid
         this.itemsService.setupDatabase(this.uid)
         return this.itemsService.list()
       })
     );
+  }
+
+  signInAnonymously() {
+    this.authService.signInAnonymously()
+    return this.authService.user
   }
 
   async joinShoppingList() {
