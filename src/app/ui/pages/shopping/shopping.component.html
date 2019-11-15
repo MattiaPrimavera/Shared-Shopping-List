@@ -5,8 +5,9 @@
 
 <mat-accordion class="accordion">
   <ng-template #loading>
-      <app-loading-screen></app-loading-screen>
+    <app-loading-screen></app-loading-screen>
   </ng-template>
+
   <div *ngIf="items | async as shoppingList; else loading">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>

@@ -4,9 +4,13 @@ p {
 }
 
 .checkbox-margin {
-    margin: 0 2px;
+    margin-right: 8px;
 }
 
 p {
     color: gray;
+}
+
+p:first-of-type {
+    color: black;
 }

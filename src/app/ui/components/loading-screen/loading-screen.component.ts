@@ -2,6 +2,11 @@ import { LoadingScreenService } from "../../../services/loading-screen/loading-s
 import { Subscription } from "rxjs";
 import { OnDestroy, OnInit, Component } from '@angular/core';
 
+/**
+ * Loading screen component and service: https://nezhar.com/blog/create-a-loading-screen-for-angular-apps/
+ * Loader screen animation: https://codepen.io/meowwwls/pen/PBBzRL
+ */
+
 @Component({
   selector: 'app-loading-screen',
   templateUrl: './loading-screen.component.html',

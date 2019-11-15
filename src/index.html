@@ -8,6 +8,35 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style type="text/css">
+    .loading {
+      position: fixed;
+      opacity: 0;
+      background: #272c33;
+      height: 100%;
+      width: 100%;
+      padding-top: 25vh;
+      text-align: center;
+      z-index: -1;
+      transition: opacity .8s ease-out;
+    }
+
+    app-root:empty + .loading h1 {
+      margin-bottom: 50px;
+      font-family: "courier", monospace;
+      color: #EEE;
+    }
+
+    app-root:empty + .loading {
+      opacity: 1;
+      z-index: 100;
+    }
+
+    app-root:empty + .loading h2 {
+      color: #EEE;
+    }
+  </style>
 </head>
 <body>
   <app-root></app-root>

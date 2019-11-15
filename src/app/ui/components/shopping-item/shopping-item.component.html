@@ -1,8 +1,8 @@
 <mat-list-item @items>
   <mat-checkbox class="checkbox-margin" (change)="onDoneClicked()">
-    <div (click)="onClick()">
-      <h4 mat-line>{{ item.title }}</h4>
-      <p mat-line> {{ item.description }}</p>
-    </div>
   </mat-checkbox>
+  <div (click)="onClick()">
+    <p mat-line>{{ item.title }}</p>
+    <p mat-line> {{ item.description }}</p>
+  </div>
 </mat-list-item>
