@@ -1,18 +1,10 @@
 # SharedShoppingList
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.12.
-
-## References & Useful docs
-
-- [Angular — Applying Motion principles to a listing](https://medium.com/google-developer-experts/angular-applying-motion-principles-to-a-list-d5cdd35c899e)
+Angular & Firebase Shared Shopping list example
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
@@ -26,13 +18,9 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-
 # Resources 
-
+- [Angular — Applying Motion principles to a listing](https://medium.com/google-developer-experts/angular-applying-motion-principles-to-a-list-d5cdd35c899e)
 - [CSS loaders](https://freefrontend.com/css-loaders/)
 - [Create a loading screen for Angular 7 apps](https://nezhar.com/blog/create-a-loading-screen-for-angular-apps/)
-- [🎨 How To Style Angular Application Loading With Angular CLI Like a Boss 😎](https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)
+- [How To Style Angular Application Loading With Angular CLI Like a Boss](https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)
+- [Customize the Initial Loading Screen in Angular](https://angularfirebase.com/lessons/customize-the-initial-loading-screen-in-angular/)
