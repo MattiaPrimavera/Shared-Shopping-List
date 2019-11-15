@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -64,6 +64,8 @@ import { LoadingScreenComponent } from './ui/components/loading-screen/loading-s
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
@@ -80,8 +82,6 @@ import { LoadingScreenComponent } from './ui/components/loading-screen/loading-s
     QRCodeModule
   ],
   providers: [
-    AngularFireDatabase,
-    AngularFireAuth,
     AddItemBottomSheetService,
     UpdateItemBottomSheetService,
     ItemDataService
