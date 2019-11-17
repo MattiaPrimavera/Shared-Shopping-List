@@ -41,6 +41,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "baseHref": "/Shared-Shopping-List/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
