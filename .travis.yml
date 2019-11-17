@@ -13,7 +13,7 @@ install:
   - npm ci
 
 script:
-  - npm run build:prod
+  - npm run build:prod:github-pages
 
 deploy:
   provider: pages
