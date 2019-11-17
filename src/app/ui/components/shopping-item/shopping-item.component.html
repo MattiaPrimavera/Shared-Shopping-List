@@ -1,5 +1,9 @@
 <mat-list-item @items>
-  <mat-checkbox class="checkbox-margin" (change)="onDoneClicked()">
+  <mat-checkbox
+    class="checkbox-margin"
+    (change)="onDoneClicked()"
+    [checked]="item.done"
+  >
   </mat-checkbox>
   <div (click)="onClick()">
     <p mat-line>{{ item.title }}</p>
