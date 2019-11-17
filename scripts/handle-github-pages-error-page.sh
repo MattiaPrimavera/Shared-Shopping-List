@@ -1,0 +1,1 @@
+cp dist/shared-shopping-list/index.html dist/shared-shopping-list/404.html
