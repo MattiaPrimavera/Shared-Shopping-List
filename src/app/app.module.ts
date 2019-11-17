@@ -37,6 +37,7 @@ import { QRCodeModule, QRCodeComponent } from 'angular2-qrcode';
 import { MenuToolbarComponent } from './ui/components/menu-toolbar/toolbar/toolbar.component';
 import { MenuComponent } from './ui/components/menu-toolbar/menu/menu.component';
 import { LoadingScreenComponent } from './ui/components/loading-screen/loading-screen.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { LoadingScreenComponent } from './ui/components/loading-screen/loading-s
     MatBottomSheetModule,
     MatSnackBarModule,
     MatToolbarModule,
-    QRCodeModule
+    QRCodeModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     AddItemBottomSheetService,
