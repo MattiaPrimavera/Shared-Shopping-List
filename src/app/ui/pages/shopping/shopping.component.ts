@@ -181,9 +181,6 @@ export class ShoppingComponent implements OnInit {
       case MenuAction.joinShoppingList:
         this.joinShoppingList();
         break;
-      case MenuAction.signOut:
-        this.authService.signOut();
-        break;
       default:
         break;
     }

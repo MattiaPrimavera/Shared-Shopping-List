@@ -1,5 +1,4 @@
 export enum MenuAction {
     inviteUser,
-    joinShoppingList,
-    signOut
+    joinShoppingList
 }

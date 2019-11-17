@@ -22,9 +22,4 @@ export class MenuComponent implements OnInit {
     console.log('[menu] joinShoppingList');
     this.menuClicked.emit(MenuAction.joinShoppingList);
   }
-
-  signOut() {
-    console.log('[menu] signOut');
-    this.menuClicked.emit(MenuAction.signOut);
-  }
 }
