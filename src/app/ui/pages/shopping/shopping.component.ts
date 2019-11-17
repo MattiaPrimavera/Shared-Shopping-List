@@ -17,6 +17,7 @@ import { StoreService } from '../../../services/store/store.service';
 import { InviteUserComponent } from '../../modals/invite-user/invite-user.component';
 import { MenuAction } from '../../components/menu-toolbar/actions/menu';
 import { ToolbarAction } from '../../components/menu-toolbar/actions/toolbar';
+import { JoinComponent } from '../../components/join/join.component';
 
 @Component({
   animations: [
@@ -69,7 +70,7 @@ export class ShoppingComponent implements OnInit {
   }
 
   async joinShoppingList() {
-    const dialogRef = this.openDialog('Join shopping', GetUserUidFormComponent);
+    const dialogRef = this.openDialog('Join shopping', JoinComponent);
     const uid = await dialogRef.afterClosed().toPromise();
     console.log(`[shopping] joining ${uid}`);
     if (uid) {

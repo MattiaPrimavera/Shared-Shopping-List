@@ -7,10 +7,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./invite-user.component.scss']
 })
 export class InviteUserComponent implements OnInit {
-
   constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }
-
 }

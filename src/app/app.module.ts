@@ -38,6 +38,7 @@ import { MenuToolbarComponent } from './ui/components/menu-toolbar/toolbar/toolb
 import { MenuComponent } from './ui/components/menu-toolbar/menu/menu.component';
 import { LoadingScreenComponent } from './ui/components/loading-screen/loading-screen.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { JoinComponent } from './ui/components/join/join.component';
 
 @NgModule({
   declarations: [
@@ -53,12 +54,14 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     MenuToolbarComponent,
     MenuComponent,
     LoadingScreenComponent,
+    JoinComponent,
   ],
   entryComponents: [
     AddItemComponent,
     UpdateItemComponent,
     GetUserUidFormComponent,
     InviteUserComponent,
+    JoinComponent,
     QRCodeComponent
   ],
   imports: [

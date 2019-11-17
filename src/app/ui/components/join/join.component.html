@@ -1,0 +1,17 @@
+<h1>Join shopping</h1>
+<p>Scan QR Code:</p>
+<input type="file" class="custom-file-input" accept="image/*" (change)="onFileChange($event)">
+
+<p>or insert invitation ID</p>
+
+<form class="form" [formGroup]="userUidForm" (ngSubmit)="onSubmit()">
+    <h1 mat-dialog-title>{{ title }}</h1>
+    <div mat-dialog-content>
+        <mat-form-field>
+        <input matInput placeholder="User UID" formControlName="uid">
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button cdkFocusInitial>Ok</button>
+    </div>
+</form>
