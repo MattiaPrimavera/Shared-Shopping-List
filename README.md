@@ -24,3 +24,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 - [Create a loading screen for Angular 7 apps](https://nezhar.com/blog/create-a-loading-screen-for-angular-apps/)
 - [How To Style Angular Application Loading With Angular CLI Like a Boss](https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)
 - [Customize the Initial Loading Screen in Angular](https://angularfirebase.com/lessons/customize-the-initial-loading-screen-in-angular/)
+- [Progressive Web App Splash Screens](https://medium.com/@applification/progressive-web-app-splash-screens-80340b45d210)
