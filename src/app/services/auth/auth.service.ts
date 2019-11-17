@@ -15,32 +15,32 @@ export class AuthService {
     private store: StoreService,
   ) {
     this.afAuth.user.subscribe(user => {
-      console.log('[auth.service] User', user)
+      console.log('[auth.service] User', user);
       if (user) {
-        console.log(`[auth.service] uid ${user.uid}`)
+        console.log(`[auth.service] uid ${user.uid}`);
         this.store.setState({
           isAuth: true,
           uid: user.uid
-        })
-      } else this.store.setState(null)
-    })
+        });
+      } else { this.store.setState(null); }
+    });
   }
- 
+
   get user(): Observable<User> {
-    return this.afAuth.user
+    return this.afAuth.user;
   }
 
   async signInAnonymously() {
     try {
-      await this.afAuth.auth.signInAnonymously()
+      await this.afAuth.auth.signInAnonymously();
     } catch (error) {
-      console.log(`[auth.service] Error code ${error.code} message: ${error.message}`)
+      console.log(`[auth.service] Error code ${error.code} message: ${error.message}`);
     }
   }
 
   async signOut() {
-    await this.afAuth.auth.signOut()
-    console.log('[auth.service] Logout successful')
-    this.router.navigate(['/'])
+    await this.afAuth.auth.signOut();
+    console.log('[auth.service] Logout successful');
+    this.router.navigate(['/']);
   }
 }

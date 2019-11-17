@@ -35,9 +35,9 @@ export class ShoppingComponent implements OnInit {
   items: Observable<ShoppingItem[]>;
   step = 0;
 
-  uid: string
-  action: string
-  hideJoin = false
+  uid: string;
+  action: string;
+  hideJoin = false;
 
   constructor(
     private authService: AuthService,
@@ -56,32 +56,32 @@ export class ShoppingComponent implements OnInit {
   ngOnInit() {
     this.items = this.signInAnonymously().pipe(
       switchMap(user => {
-        this.uid = user.uid
-        this.itemsService.setupDatabase(this.uid)
-        return this.itemsService.list()
+        this.uid = user.uid;
+        this.itemsService.setupDatabase(this.uid);
+        return this.itemsService.list();
       })
     );
   }
 
   signInAnonymously() {
-    this.authService.signInAnonymously()
-    return this.authService.user
+    this.authService.signInAnonymously();
+    return this.authService.user;
   }
 
   async joinShoppingList() {
-    const dialogRef = this.openDialog('Join shopping', GetUserUidFormComponent)
-    const uid = await dialogRef.afterClosed().toPromise()
-    console.log(`[shopping] joining ${uid}`)
+    const dialogRef = this.openDialog('Join shopping', GetUserUidFormComponent);
+    const uid = await dialogRef.afterClosed().toPromise();
+    console.log(`[shopping] joining ${uid}`);
     if (uid) {
       try {
-        const loggedInUserUid = this.store.getState().uid
-        this.friendsService.setupDatabase(loggedInUserUid)
-        await this.friendsService.save({ uid })
-        this.itemsService.setupDatabase(uid)
-        this.items = this.itemsService.list()
+        const loggedInUserUid = this.store.getState().uid;
+        this.friendsService.setupDatabase(loggedInUserUid);
+        await this.friendsService.save({ uid });
+        this.itemsService.setupDatabase(uid);
+        this.items = this.itemsService.list();
         console.log(`[shopping] Opening shopping list ${uid}`);
       } catch (err) {
-        console.error('[shopping] join', err)
+        console.error('[shopping] join', err);
         this.snackbarService.openSnackBar('Operation failed', 'JOIN');
       }
     }
@@ -92,7 +92,7 @@ export class ShoppingComponent implements OnInit {
       width: '250px',
       data: { title }
     });
-    return dialogRef
+    return dialogRef;
   }
 
   onItemClicked(item: ShoppingItem) {
@@ -143,49 +143,49 @@ export class ShoppingComponent implements OnInit {
   }
 
   openMyShoppingList() {
-    const { uid } = this.store.getState()
-    this.itemsService.setupDatabase(uid)
+    const { uid } = this.store.getState();
+    this.itemsService.setupDatabase(uid);
     this.snackbarService.openSnackBar('Back to my shopping list', 'OPEN');
   }
 
   async deleteAll() {
-    await this.itemsService.deleteAll()
+    await this.itemsService.deleteAll();
     this.snackbarService.openSnackBar('Shopping list cleared', 'DELETE');
   }
 
   async inviteUser() {
-    const dialogRef = this.openDialog('Join shopping', InviteUserComponent)
-    await dialogRef.afterClosed().toPromise()
+    const dialogRef = this.openDialog('Join shopping', InviteUserComponent);
+    await dialogRef.afterClosed().toPromise();
   }
 
   toolbarAction($toolbarAction) {
-    console.log('[shopping] Toolbar action: ', $toolbarAction)
-    switch($toolbarAction) {
+    console.log('[shopping] Toolbar action: ', $toolbarAction);
+    switch ($toolbarAction) {
       case ToolbarAction.deleteAll:
-        this.deleteAll()
-        break
+        this.deleteAll();
+        break;
       case ToolbarAction.openMyShoppingList:
-        this.openMyShoppingList()
-        break
+        this.openMyShoppingList();
+        break;
       default:
-        break
+        break;
     }
   }
 
   menuAction($menuAction) {
-    console.log('[shopping] Menu action: ', $menuAction)
-    switch($menuAction) {
+    console.log('[shopping] Menu action: ', $menuAction);
+    switch ($menuAction) {
       case MenuAction.inviteUser:
-        this.inviteUser()
+        this.inviteUser();
         break;
       case MenuAction.joinShoppingList:
-        this.joinShoppingList()
-        break
+        this.joinShoppingList();
+        break;
       case MenuAction.signOut:
-        this.authService.signOut()
-        break
+        this.authService.signOut();
+        break;
       default:
-        break
+        break;
     }
   }
 }

@@ -4,7 +4,7 @@ import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { StoreService } from 'src/app/services/store/store.service';
 
 interface Friend {
-  uid: string
+  uid: string;
 }
 
 @Injectable({
@@ -20,7 +20,7 @@ export class FriendsService {
 
   setupDatabase(uid: string) {
     this.itemRef = this.db.object<Friend>(`friends/${uid}`);
-    this.item = this.itemRef.valueChanges();      
+    this.item = this.itemRef.valueChanges();
   }
 
   async save(friends: Friend) {

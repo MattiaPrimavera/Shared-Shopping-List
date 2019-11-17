@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Subject } from "rxjs";
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoadingScreenService {
-  private _loading: boolean = false;
+  private isLoading = false;
   loadingStatus = new Subject<boolean>();
 
-  get loading():boolean {
-    return this._loading;
+  get loading(): boolean {
+    return this.isLoading;
   }
 
   set loading(value) {
-    this._loading = value;
+    this.isLoading = value;
     this.loadingStatus.next(value);
   }
 
   startLoading() {
-    this.loading = true;
+    this.isLoading = true;
   }
 
   stopLoading() {
-    this.loading = false;
+    this.isLoading = false;
   }
 }

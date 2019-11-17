@@ -12,7 +12,7 @@ export class ItemsService extends BaseService<ShoppingItem> {
     db: AngularFireDatabase,
     store: StoreService
   ) {
-    super('items', db, store)
+    super('items', db, store);
   }
 
   /**
@@ -21,7 +21,7 @@ export class ItemsService extends BaseService<ShoppingItem> {
    * @param uid Firebase user uid
    */
   setupDatabase(uid: string) {
-    console.log(`[items.service] fetching items/${uid}`)
+    console.log(`[items.service] fetching items/${uid}`);
     this.uid = uid;
     this.ref = this.db.list<ShoppingItem>(`items/${uid}`);
   }

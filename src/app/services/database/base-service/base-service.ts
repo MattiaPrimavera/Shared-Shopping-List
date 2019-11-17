@@ -1,26 +1,26 @@
-import { IBaseService } from "./ibase-service";
+import { IBaseService } from './ibase-service';
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
-import { IBaseEntity } from "../ibase-entity";
-import { Observable } from "rxjs";
+import { IBaseEntity } from '../ibase-entity';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { StoreService } from 'src/app/services/store/store.service';
 import { ShoppingItem } from 'src/app/models/shopping-item';
 
 export abstract class BaseService<T extends IBaseEntity> implements IBaseService<T> {
   protected ref: AngularFireList<T>;
-  protected uid: string
+  protected uid: string;
 
   constructor(
     protected path: string,
     protected db: AngularFireDatabase,
     protected store: StoreService
   ) {
-    const state = this.store.getState()
+    const state = this.store.getState();
 
     if (state) {
-      this.uid = state.uid
-      console.log('Base service uid: ', this.uid)
-      this.ref = this.db.list<T>(`${path}/${this.uid}`);  
+      this.uid = state.uid;
+      console.log('Base service uid: ', this.uid);
+      this.ref = this.db.list<T>(`${path}/${this.uid}`);
     }
   }
 
@@ -37,9 +37,9 @@ export abstract class BaseService<T extends IBaseEntity> implements IBaseService
             return changes.map(c => ({
               key: c.payload.key,
               ...c.payload.val(),
-            }))
+            }));
           })
-      )
+      );
   }
 
   add(item: T): firebase.database.ThenableReference {
@@ -47,15 +47,15 @@ export abstract class BaseService<T extends IBaseEntity> implements IBaseService
   }
 
   update(item: T): Promise<void> {
-    return this.ref.update(item.key, item)
+    return this.ref.update(item.key, item);
   }
 
   delete(key: string): Promise<void> {
-    return this.ref.remove(key)
+    return this.ref.remove(key);
   }
 
   deleteAll() {
-    return this.ref.remove()
+    return this.ref.remove();
   }
 
   /**

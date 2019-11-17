@@ -38,6 +38,6 @@ export class ShoppingItemComponent implements OnInit {
   }
 
   onDoneClicked() {
-    setTimeout(() => this.doneClicked.emit(this.item), 500)
+    setTimeout(() => this.doneClicked.emit(this.item), 500);
   }
 }

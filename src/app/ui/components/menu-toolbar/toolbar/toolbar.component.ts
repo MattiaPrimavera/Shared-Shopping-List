@@ -15,17 +15,17 @@ export class MenuToolbarComponent implements OnInit {
   ngOnInit() {}
 
   openMyShoppingList() {
-    console.log('[menu-toolbar] openMyShoppingList')
-    this.toolbarAction.emit(ToolbarAction.openMyShoppingList)
+    console.log('[menu-toolbar] openMyShoppingList');
+    this.toolbarAction.emit(ToolbarAction.openMyShoppingList);
   }
 
   deleteAll() {
-    console.log('[menu-toolbar] deleteAll')
-    this.toolbarAction.emit(ToolbarAction.deleteAll)
+    console.log('[menu-toolbar] deleteAll');
+    this.toolbarAction.emit(ToolbarAction.deleteAll);
   }
 
   menuClicked($event) {
-    console.log('[menu-toolbar] menuClicked')
-    this.menuAction.emit($event)
+    console.log('[menu-toolbar] menuClicked');
+    this.menuAction.emit($event);
   }
 }
