@@ -14,6 +14,11 @@ export class MenuToolbarComponent implements OnInit {
 
   ngOnInit() {}
 
+  openChat() {
+    console.log('[menu-toolbar] openChat');
+    this.toolbarAction.emit(ToolbarAction.openChat);
+  }
+
   openMyShoppingList() {
     console.log('[menu-toolbar] openMyShoppingList');
     this.toolbarAction.emit(ToolbarAction.openMyShoppingList);

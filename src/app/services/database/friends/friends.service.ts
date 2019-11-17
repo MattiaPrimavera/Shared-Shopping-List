@@ -23,6 +23,10 @@ export class FriendsService {
     this.item = this.itemRef.valueChanges();
   }
 
+  get(): Observable<Friend> {
+    return this.item;
+  }
+
   async save(friends: Friend) {
     this.itemRef.set(friends);
   }

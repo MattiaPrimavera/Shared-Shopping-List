@@ -9,7 +9,7 @@ import { ItemDataService } from '../../../services/item-data/item-data.service';
 import { SnackbarService } from '../../../services/snackbar/snackbar.service';
 import { AuthService } from '../../../services/auth/auth.service';
 import { switchMap } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FriendsService } from '../../../services/database/friends/friends.service';
 import { MatDialog } from '@angular/material/dialog';
 import { GetUserUidFormComponent } from '../../modals/get-user-uid-form/get-user-uid-form.component';
@@ -18,6 +18,7 @@ import { InviteUserComponent } from '../../modals/invite-user/invite-user.compon
 import { MenuAction } from '../../components/menu-toolbar/actions/menu';
 import { ToolbarAction } from '../../components/menu-toolbar/actions/toolbar';
 import { JoinComponent } from '../../components/join/join.component';
+import { ChatComponent } from '../../modals/chat/chat.component';
 
 @Component({
   animations: [
@@ -48,6 +49,7 @@ export class ShoppingComponent implements OnInit {
     private itemDataService: ItemDataService,
     private snackbarService: SnackbarService,
     private route: ActivatedRoute,
+    private router: Router,
     private friendsService: FriendsService,
     public dialog: MatDialog,
     private store: StoreService
@@ -143,6 +145,10 @@ export class ShoppingComponent implements OnInit {
     this.step--;
   }
 
+  async openChat() {
+    this.router.navigate(['chat'])
+  }
+
   openMyShoppingList() {
     const { uid } = this.store.getState();
     this.itemsService.setupDatabase(uid);
@@ -165,6 +171,9 @@ export class ShoppingComponent implements OnInit {
       case ToolbarAction.deleteAll:
         this.deleteAll();
         break;
+      case ToolbarAction.openChat:
+        this.openChat();
+        break
       case ToolbarAction.openMyShoppingList:
         this.openMyShoppingList();
         break;
