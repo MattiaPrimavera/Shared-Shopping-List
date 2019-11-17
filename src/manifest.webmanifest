@@ -1,6 +1,6 @@
 {
-  "name": "shared-shopping-list",
-  "short_name": "shared-shopping-list",
+  "name": "Shared shopping list",
+  "short_name": "Share shop",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
