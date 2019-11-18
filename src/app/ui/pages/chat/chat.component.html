@@ -1,17 +1,15 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <button mat-icon-button (click)="openShoppingList()">
-            <mat-icon>keyboard_backspace</mat-icon>
-        </button>
-        <span>Shopping List</span>
-    </mat-toolbar-row>
-</mat-toolbar>
+<!-- Top toolbar with Back button -->
+<app-chat-toolbar (onBackButton)="openShoppingList()"></app-chat-toolbar>
 
-<div id="chat-content">
+<!-- Chat -->
+<div id="chatContent">
+    <!-- Loader -->
     <ng-template #loading>
         Loading ...
     </ng-template>
-    <div *ngIf="messages | async as mexs; else loading">
+
+    <!-- Messages -->
+    <div *ngIf="messages | async as mexs; else loading" id="chatMessages">
         <app-chat-widget
             [myUid]="uid"
             [messages]="mexs"
@@ -19,18 +17,17 @@
         </app-chat-widget>
     </div>
 
-    <form class="form" [formGroup]="newMessageForm" (ngSubmit)="onSubmit()">
-        <div id="chat">
-            <div id="messageField" mat-dialog-content>
-                <mat-form-field>
-                    <input matInput placeholder="Message" formControlName="text">
-                </mat-form-field>
-            </div>
-            <div id="sendButton">
-                <button mat-icon-button>
-                    <mat-icon>send</mat-icon>
-                </button>
-            </div>
+    <!-- Input Field & Send button -->
+    <form [formGroup]="newMessageForm" (ngSubmit)="onSubmit()">
+        <div id="messageField" mat-dialog-content>
+            <mat-form-field>
+                <input matInput placeholder="Message" formControlName="text">
+            </mat-form-field>
+        </div>
+        <div id="sendButton">
+            <button mat-icon-button>
+                <mat-icon>send</mat-icon>
+            </button>
         </div>
     </form>
 </div>

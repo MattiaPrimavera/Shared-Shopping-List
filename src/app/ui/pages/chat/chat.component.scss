@@ -1,34 +1,37 @@
-#chat {
-    padding-left: 2%;
-    padding-right: 2%;
-
-    div {
-        display: inline-block;
-    }
-
-    #messageField {
-        min-width: 80%;
-        vertical-align: middle;
-        width: auto;
-
-        mat-form-field {
-            width: 100%;
-        }
-    }
-
-    #sendButton {
-        position: relative;
-        float: right;
-        vertical-align: middle;
-    }
-}
-
-.form {
+app-chat-toolbar {
     position: fixed;
-    bottom: 0;
+    top: 0;
     width: 100%;
 }
 
-#chat-content {
+#chatContent {
     height: 100%;
+    padding-top: 10%;
+
+    form {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background:rgba(255,255,255,0.85);
+        padding-left: 2%;
+
+        #messageField, #sendButton {
+            display: inline-block;
+        }
+
+        #messageField {
+            min-width: 80%;
+            vertical-align: middle;
+            width: auto;
+
+            mat-form-field {
+                width: 100%;
+            }
+        }
+
+        #sendButton {
+            float: right;
+            margin-right: 2%;
+        }
+    }
 }

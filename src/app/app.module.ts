@@ -41,6 +41,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { JoinComponent } from './ui/components/join/join.component';
 import { ChatComponent } from './ui/pages/chat/chat.component';
 import { ChatWidgetComponent } from './ui/components/chat-widget/chat-widget.component';
+import { ChatToolbarComponent } from './ui/pages/chat/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -53,12 +54,13 @@ import { ChatWidgetComponent } from './ui/components/chat-widget/chat-widget.com
     ShoppingComponent,
     GetUserUidFormComponent,
     InviteUserComponent,
-    MenuToolbarComponent,
+    ChatToolbarComponent,
     MenuComponent,
     LoadingScreenComponent,
     JoinComponent,
     ChatComponent,
     ChatWidgetComponent,
+    MenuToolbarComponent,
   ],
   entryComponents: [
     AddItemComponent,
