@@ -1,53 +1,53 @@
 
 /* Chat containers */
-.container {
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.chatMessage {
     border: 2px solid #dedede;
     background-color: #ebe5e5;
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
     width: 60%;
-    float: left;
+    padding: 10;
+
+    img {
+        float: left;
+        max-width: 60px;
+        width: 100%;
+        margin-right: 20px;
+        border-radius: 50%;
+    }
+
+    img.right {
+        float: right;
+        margin-left: 20px;
+        margin-right: 0;
+    }
 }
 
-/* Darker chat container */
-.darker {
+.guestMessage {
     border-color: #ccc;
     background-color: #ddd;
-    float: right;
 }
 
 /* Clear floats */
-.container::after {
+.chatMessage::after {
     content: "";
     clear: both;
     display: table;
 }
 
-/* Style images */
-.container img {
-    float: left;
-    max-width: 60px;
-    width: 100%;
-    margin-right: 20px;
-    border-radius: 50%;
-}
-
-/* Style the right image */
-.container img.right {
-    float: right;
-    margin-left: 20px;
-    margin-right:0;
-}
-
-/* Style time text */
-.time-right {
-    float: right;
+.time-guest {
     color: #aaa;
 }
 
-/* Style time text */
-.time-left {
-    float: left;
+.time-message {
     color: #999;
 }

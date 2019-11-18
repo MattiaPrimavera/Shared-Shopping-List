@@ -1,11 +1,11 @@
 <div *ngFor="let message of messages;">
-    <div [class]="isMyMessage(message) ? 'container' : 'container darker'">
+    <div [class]="isMyMessage(message) ? 'chatMessage left' : 'chatMessage guestMessage right'">
         <img
             src="https://cdn.imgbin.com/1/14/22/imgbin-computer-icons-online-chat-thought-avatar-emoticon-svg-abZeMbhFYL96MaXRAteJEQ0uZ.jpg"
             width="50"
             alt="Avatar"
             [class]="isMyMessage(message) ? 'left' : 'right'">
         <p id="message" [class]="isMyMessage(message) ? 'left' : 'right'">{{ message?.text }}</p>
-        <span [class]="isMyMessage(message) ? 'time-left' : 'time-right'">11:00</span>
+        <span [class]="isMyMessage(message) ? 'time-message right' : 'time-guest left'">11:00</span>
     </div>
 </div>
