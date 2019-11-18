@@ -14,8 +14,8 @@ import { FriendsService } from '../../../services/database/friends/friends.servi
 import { MatDialog } from '@angular/material/dialog';
 import { StoreService } from '../../../services/store/store.service';
 import { InviteUserComponent } from '../../modals/invite-user/invite-user.component';
-import { MenuAction } from '../../components/menu-toolbar/actions/menu';
-import { ToolbarAction } from '../../components/menu-toolbar/actions/toolbar';
+import { MenuAction } from './menu-toolbar/actions/menu';
+import { ToolbarAction } from './menu-toolbar/actions/toolbar';
 import { JoinComponent } from '../../components/join/join.component';
 
 @Component({
