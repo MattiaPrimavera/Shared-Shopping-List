@@ -13,7 +13,8 @@ export const environment = {
     messagingSenderId: '431938162880',
     appId: '1:431938162880:web:3a3f5020c97a8505e01d25',
     measurementId: 'G-MZ3BHS9WH1'
-  }
+  },
+  inviteBaseUrl: 'http://localhost:4200/shopping'
 };
 
 /*

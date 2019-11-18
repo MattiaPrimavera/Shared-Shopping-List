@@ -1,8 +1,11 @@
-<h2>Invite</h2>
-<p>My QR Code to share:</p>
-<div *ngIf="authService.user | async as user">
-    <p>{{ user.uid }}</p>
-    <div>
-        <qr-code [value]="user.uid" [size]="150"></qr-code>
+<div class="container center">
+    <div *ngIf="authService.user | async as user">
+        <button mat-raised-button color="primary" (click)="copyInviteToClipboard()">Copy invite to Clipboard</button>
+        <p>or Scan the QRCode</p>
+
+        <p>{{ user.uid }}</p>
+        <div>
+            <qr-code [value]="user.uid" [size]="150"></qr-code>
+        </div>
     </div>
 </div>
