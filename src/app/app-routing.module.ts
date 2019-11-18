@@ -7,6 +7,7 @@ import { ChatComponent } from './ui/modals/chat/chat.component';
 const routes: Routes = [
   { path: '', component: ShoppingComponent },
   { path: 'chat', component: ChatComponent },
+  { path: 'shopping/:uid', component: ShoppingComponent },
   { path: 'shopping', component: ShoppingComponent },
   { path: 'invite', component: InviteUserComponent }
 ];

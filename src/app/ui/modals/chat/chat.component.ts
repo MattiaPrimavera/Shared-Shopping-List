@@ -33,8 +33,9 @@ export class ChatComponent implements AfterViewInit {
       const uid = state.uid;
       if (!uid) throw 'Missing uid';
 
+      const joinUserUid = state.joinUserUid;
       console.log(`Chat uid: ${uid}`)
-      this.chatService.setupDatabase(uid);
+      this.chatService.setupDatabase(joinUserUid || uid);
       this.messages = this.chatService.list();
     } catch (err) {
       this.router.navigate(['shopping'])

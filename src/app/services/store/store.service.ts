@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 interface State {
   isAuth: boolean;
   uid: string;
+  joinUserUid: string;
 }
 
 @Injectable({

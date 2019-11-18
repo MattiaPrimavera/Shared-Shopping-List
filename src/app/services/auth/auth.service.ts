@@ -18,10 +18,14 @@ export class AuthService {
       console.log('[auth.service] User', user);
       if (user) {
         console.log(`[auth.service] uid ${user.uid}`);
-        this.store.setState({
-          isAuth: true,
-          uid: user.uid
-        });
+        const state = this.store.getState();
+        if (!state) {
+          this.store.setState({
+            isAuth: true,
+            uid: user.uid,
+            joinUserUid: null
+          });
+        }
       } else { this.store.setState(null); }
     });
   }

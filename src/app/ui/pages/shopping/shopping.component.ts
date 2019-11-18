@@ -1,24 +1,22 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, transition, query, stagger, animateChild } from '@angular/animations';
 import { ShoppingItem } from '../../../models/shopping-item';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, of } from 'rxjs';
 import { ItemsService } from '../../../services/database/items/items.service';
 import { AddItemBottomSheetService } from '../../components/add-item/bottom-sheet/add-item-bottom-sheet.service';
 import { UpdateItemBottomSheetService } from '../../components/update-item/bottom-sheet/update-item-bottom-sheet.service';
 import { ItemDataService } from '../../../services/item-data/item-data.service';
 import { SnackbarService } from '../../../services/snackbar/snackbar.service';
 import { AuthService } from '../../../services/auth/auth.service';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FriendsService } from '../../../services/database/friends/friends.service';
 import { MatDialog } from '@angular/material/dialog';
-import { GetUserUidFormComponent } from '../../modals/get-user-uid-form/get-user-uid-form.component';
 import { StoreService } from '../../../services/store/store.service';
 import { InviteUserComponent } from '../../modals/invite-user/invite-user.component';
 import { MenuAction } from '../../components/menu-toolbar/actions/menu';
 import { ToolbarAction } from '../../components/menu-toolbar/actions/toolbar';
 import { JoinComponent } from '../../components/join/join.component';
-import { ChatComponent } from '../../modals/chat/chat.component';
 
 @Component({
   animations: [
@@ -36,10 +34,7 @@ export class ShoppingComponent implements OnInit {
   title = 'shared-shopping-list';
   items: Observable<ShoppingItem[]>;
   step = 0;
-
   uid: string;
-  action: string;
-  hideJoin = false;
 
   constructor(
     private authService: AuthService,
@@ -58,12 +53,13 @@ export class ShoppingComponent implements OnInit {
 
   ngOnInit() {
     this.items = this.signInAnonymously().pipe(
-      switchMap(user => {
-        this.uid = user.uid;
-        this.itemsService.setupDatabase(this.uid);
-        return this.itemsService.list();
+      switchMap(loggedInUser => {
+        return combineLatest([
+          of(loggedInUser.uid),
+          this.handleDeeplinks()
+        ]).pipe(switchMap(([userUid, deeplinkUid]) => this.setupDatabase(userUid, deeplinkUid)))
       })
-    );
+    )
   }
 
   signInAnonymously() {
@@ -71,23 +67,55 @@ export class ShoppingComponent implements OnInit {
     return this.authService.user;
   }
 
-  async joinShoppingList() {
-    const dialogRef = this.openDialog('Join shopping', JoinComponent);
-    const uid = await dialogRef.afterClosed().toPromise();
-    console.log(`[shopping] joining ${uid}`);
-    if (uid) {
-      try {
-        const loggedInUserUid = this.store.getState().uid;
-        this.friendsService.setupDatabase(loggedInUserUid);
-        await this.friendsService.save({ uid });
-        this.itemsService.setupDatabase(uid);
-        this.items = this.itemsService.list();
-        console.log(`[shopping] Opening shopping list ${uid}`);
-      } catch (err) {
-        console.error('[shopping] join', err);
-        this.snackbarService.openSnackBar('Operation failed', 'JOIN');
-      }
+  handleDeeplinks(): Observable<string> {
+    return this.route
+      .paramMap
+      .pipe(map(params => params.get('uid') || null))
+  }
+
+  setupDatabase(userUid: string, deeplinkUid: string) {
+    console.log(`Deeplink uid ${deeplinkUid}, logged in uid ${userUid}`)
+    const state = this.store.getState()
+    if (deeplinkUid && deeplinkUid !== userUid) {
+      state.joinUserUid = deeplinkUid;
+      this.store.setState(state);
     }
+
+    this.uid = deeplinkUid || userUid;
+    this.itemsService.setupDatabase(this.uid);
+    return this.itemsService.list();
+  }
+
+  async joinShoppingList() {
+    try {
+      const friendUid = await this.getFriendUid();
+      console.log(`[shopping] joining ${friendUid}`);
+      if (friendUid) {
+        const loggedInUserUid = this.store.getState().uid;
+        await this.addFriend(loggedInUserUid, friendUid);
+        this.swichDatabase(friendUid)
+        console.log(`[shopping] Opening shopping list ${friendUid}`);
+      }
+    } catch (err) {
+      console.error('[shopping] join', err);
+      this.snackbarService.openSnackBar('Operation failed', 'JOIN');
+    }
+  }
+
+  async getFriendUid() {
+    const dialogRef = this.openDialog('Join shopping', JoinComponent);
+    const friendUid = await dialogRef.afterClosed().toPromise();
+    return friendUid;
+  }
+
+  async addFriend(loggedInUserUid, friendUid) {
+    this.friendsService.setupDatabase(loggedInUserUid);
+    return this.friendsService.save({ uid: friendUid });
+  }
+
+  swichDatabase(uid: string) {
+    this.itemsService.setupDatabase(uid);
+    this.items = this.itemsService.list();
   }
 
   openDialog(title: string, modalClass: any): any {
