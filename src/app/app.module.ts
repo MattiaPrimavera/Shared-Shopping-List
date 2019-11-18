@@ -30,8 +30,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { ItemDataService } from './services/item-data/item-data.service';
-import { DoneOnlyPipe } from './pipes/done-only.pipe';
-import { ToDoOnlyPipe } from './pipes/to-do-only.pipe';
+import { DoneOnlyPipe } from './pipes/done-only/done-only.pipe';
+import { ToDoOnlyPipe } from './pipes/to-do-only/to-do-only.pipe';
 import { InviteUserComponent } from './ui/modals/invite-user/invite-user.component';
 import { QRCodeModule, QRCodeComponent } from 'angular2-qrcode';
 import { MenuToolbarComponent } from './ui/components/menu-toolbar/toolbar/toolbar.component';
@@ -39,7 +39,7 @@ import { MenuComponent } from './ui/components/menu-toolbar/menu/menu.component'
 import { LoadingScreenComponent } from './ui/components/loading-screen/loading-screen.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { JoinComponent } from './ui/components/join/join.component';
-import { ChatComponent } from './ui/modals/chat/chat.component';
+import { ChatComponent } from './ui/pages/chat/chat.component';
 import { ChatWidgetComponent } from './ui/components/chat-widget/chat-widget.component';
 
 @NgModule({

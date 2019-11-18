@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ShoppingItem } from '../models/shopping-item';
+import { ShoppingItem } from '../../models/shopping-item';
 
 @Pipe({
   name: 'doneOnly'
