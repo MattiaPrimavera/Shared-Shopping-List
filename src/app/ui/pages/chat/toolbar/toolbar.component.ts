@@ -1,5 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { EventEmitter } from 'events';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-chat-toolbar',
@@ -7,12 +6,13 @@ import { EventEmitter } from 'events';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ChatToolbarComponent implements OnInit {
-  @Output() onBack = new EventEmitter();
+  @Output() onBackButton = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {}
 
   onBackClicked() {
-    this.onBack.emit(null);
+    this.onBackButton.emit(null);
   }
 }

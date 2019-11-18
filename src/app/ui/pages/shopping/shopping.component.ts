@@ -55,7 +55,7 @@ export class ShoppingComponent implements OnInit {
     this.items = this.signInAnonymously().pipe(
       switchMap(loggedInUser => {
         return combineLatest([
-          of(loggedInUser.uid),
+          of(loggedInUser ? loggedInUser.uid : null),
           this.handleDeeplinks()
         ]).pipe(switchMap(([userUid, deeplinkUid]) => this.setupDatabase(userUid, deeplinkUid)))
       })
@@ -91,7 +91,9 @@ export class ShoppingComponent implements OnInit {
       const friendUid = await this.getFriendUid();
       console.log(`[shopping] joining ${friendUid}`);
       if (friendUid) {
-        const loggedInUserUid = this.store.getState().uid;
+        const state = this.store.getState();
+        state.joinUserUid = friendUid;
+        const loggedInUserUid = state.uid;
         await this.addFriend(loggedInUserUid, friendUid);
         this.swichDatabase(friendUid)
         console.log(`[shopping] Opening shopping list ${friendUid}`);
@@ -179,7 +181,7 @@ export class ShoppingComponent implements OnInit {
 
   openMyShoppingList() {
     const { uid } = this.store.getState();
-    this.itemsService.setupDatabase(uid);
+    this.swichDatabase(uid);
     this.snackbarService.openSnackBar('Back to my shopping list', 'OPEN');
   }
 
