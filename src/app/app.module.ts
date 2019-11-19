@@ -9,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
@@ -82,7 +81,6 @@ import { DialogServiceModule } from './services/dialog/dialog.module'
     MatIconModule,
     MatInputModule,
     MatButtonModule,
-    MatExpansionModule,
     DialogServiceModule,
     MatListModule,
     MatMenuModule,

@@ -87,7 +87,7 @@ export class ShoppingComponent implements OnInit {
   }
 
   setupDatabase(userUid: string, deeplinkUid: string) {
-    console.log(`Deeplink uid ${deeplinkUid}, logged in uid ${userUid}`)
+    console.log(`[shopping] setup database with: deeplink uid ${deeplinkUid}, logged in uid ${userUid}`)
     const state = this.store.getState()
     if (deeplinkUid && deeplinkUid !== userUid) {
       state.joinUserUid = deeplinkUid;
@@ -165,18 +165,6 @@ export class ShoppingComponent implements OnInit {
 
   trackShoppingItem(item) {
     return item ? item.key : undefined;
-  }
-
-  setStep(index: number) {
-    this.step = index;
-  }
-
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
   }
 
   async openChat() {
