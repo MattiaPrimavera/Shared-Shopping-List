@@ -40,7 +40,8 @@ import { JoinComponent } from './ui/components/join/join.component';
 import { ChatComponent } from './ui/pages/chat/chat.component';
 import { ChatWidgetComponent } from './ui/components/chat-widget/chat-widget.component';
 import { ChatToolbarComponent } from './ui/pages/chat/toolbar/toolbar.component';
-import { DialogServiceModule } from './services/dialog/dialog.module'
+import { DialogServiceModule } from './services/dialog/dialog.module';
+import { ConfirmationDialogComponent } from './ui/modals/confirmation-dialog/confirmation-dialog.component'
 
 @NgModule({
   declarations: [
@@ -60,9 +61,11 @@ import { DialogServiceModule } from './services/dialog/dialog.module'
     ChatComponent,
     ChatWidgetComponent,
     MenuToolbarComponent,
+    ConfirmationDialogComponent,
   ],
   entryComponents: [
     AddItemComponent,
+    ConfirmationDialogComponent,
     UpdateItemComponent,
     GetUserUidFormComponent,
     InviteUserComponent,

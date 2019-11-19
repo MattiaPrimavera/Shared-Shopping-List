@@ -17,6 +17,7 @@ import { MenuAction } from './menu-toolbar/actions/menu';
 import { ToolbarAction } from './menu-toolbar/actions/toolbar';
 import { JoinComponent } from '../../components/join/join.component';
 import { DialogService } from 'src/app/services/dialog/dialog.service';
+import { ConfirmationDialogComponent } from '../../modals/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   animations: [
@@ -178,8 +179,12 @@ export class ShoppingComponent implements OnInit {
   }
 
   async deleteAll() {
-    await this.itemsService.deleteAll();
-    this.snackbarService.openSnackBar('Shopping list cleared', 'DELETE');
+    const isConfirmed = await this.dialogService.openDialog(ConfirmationDialogComponent, { title: 'Confirm'})
+    console.log(`[shopping] delete all isConfirmed: ${isConfirmed}`)
+    if (isConfirmed) {
+      await this.itemsService.deleteAll();
+      this.snackbarService.openSnackBar('Shopping list cleared', 'DELETE');
+    }
   }
 
   async inviteUser() {

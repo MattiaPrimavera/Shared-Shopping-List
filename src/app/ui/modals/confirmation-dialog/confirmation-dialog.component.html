@@ -1,0 +1,6 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<p>Do you really wanna reset all data ?</p>
+<div mat-dialog-actions>
+    <button mat-button (click)="confirm(false)">Non</button>
+    <button mat-button (click)="confirm(true)" cdkFocusInitial>Yes</button>
+</div>
