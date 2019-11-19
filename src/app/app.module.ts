@@ -9,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -42,6 +41,7 @@ import { JoinComponent } from './ui/components/join/join.component';
 import { ChatComponent } from './ui/pages/chat/chat.component';
 import { ChatWidgetComponent } from './ui/components/chat-widget/chat-widget.component';
 import { ChatToolbarComponent } from './ui/pages/chat/toolbar/toolbar.component';
+import { DialogServiceModule } from './services/dialog/dialog.module'
 
 @NgModule({
   declarations: [
@@ -79,11 +79,11 @@ import { ChatToolbarComponent } from './ui/pages/chat/toolbar/toolbar.component'
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
-    MatDialogModule,
     MatIconModule,
     MatInputModule,
     MatButtonModule,
     MatExpansionModule,
+    DialogServiceModule,
     MatListModule,
     MatMenuModule,
     MatBottomSheetModule,

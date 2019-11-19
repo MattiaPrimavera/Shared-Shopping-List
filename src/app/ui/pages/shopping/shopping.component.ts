@@ -11,12 +11,12 @@ import { AuthService } from '../../../services/auth/auth.service';
 import { switchMap, map } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FriendsService } from '../../../services/database/friends/friends.service';
-import { MatDialog } from '@angular/material/dialog';
 import { StoreService } from '../../../services/store/store.service';
 import { InviteUserComponent } from '../../modals/invite-user/invite-user.component';
 import { MenuAction } from './menu-toolbar/actions/menu';
 import { ToolbarAction } from './menu-toolbar/actions/toolbar';
 import { JoinComponent } from '../../components/join/join.component';
+import { DialogService } from 'src/app/services/dialog/dialog.service';
 
 @Component({
   animations: [
@@ -25,6 +25,9 @@ import { JoinComponent } from '../../components/join/join.component';
         query('@items', stagger(300, animateChild()), { optional: true })
       ]),
     ])
+  ],
+  providers: [
+    DialogService
   ],
   selector: 'app-shopping',
   templateUrl: './shopping.component.html',
@@ -46,7 +49,7 @@ export class ShoppingComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private friendsService: FriendsService,
-    public dialog: MatDialog,
+    private dialogService: DialogService,
     private store: StoreService
   ) {
   }
@@ -115,12 +118,11 @@ export class ShoppingComponent implements OnInit {
   }
 
   async getFriendUid() {
-    const dialogRef = this.openDialog('Join shopping', JoinComponent);
-    const friendUid = await dialogRef.afterClosed().toPromise();
+    const friendUid = await this.dialogService.openDialog(JoinComponent, { title: 'Join shopping '});
     return friendUid;
   }
 
-  async addFriend(loggedInUserUid, friendUid) {
+  async addFriend(loggedInUserUid: string, friendUid: string) {
     this.friendsService.setupDatabase(loggedInUserUid);
     return this.friendsService.save({ uid: friendUid });
   }
@@ -128,14 +130,6 @@ export class ShoppingComponent implements OnInit {
   swichDatabase(uid: string) {
     this.itemsService.setupDatabase(uid);
     this.items = this.itemsService.list();
-  }
-
-  openDialog(title: string, modalClass: any): any {
-    const dialogRef = this.dialog.open(modalClass, {
-      width: '250px',
-      data: { title }
-    });
-    return dialogRef;
   }
 
   onItemClicked(item: ShoppingItem) {
@@ -201,8 +195,7 @@ export class ShoppingComponent implements OnInit {
   }
 
   async inviteUser() {
-    const dialogRef = this.openDialog('Join shopping', InviteUserComponent);
-    await dialogRef.afterClosed().toPromise();
+    return this.dialogService.openDialog(InviteUserComponent, { title: 'Invite user '})
   }
 
   toolbarAction($toolbarAction) {
