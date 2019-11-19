@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { QrCodeReader } from 'src/app/services/qr-code/qr-code-reader.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-join',
@@ -13,6 +14,7 @@ export class JoinComponent implements OnInit {
   subscription: Subscription;
   userUidForm: FormGroup;
   title = 'Join Shopping';
+  isProduction: boolean;
 
   constructor(private qrReader: QrCodeReader, public dialogRef: MatDialogRef<JoinComponent>) {
     this.userUidForm = new FormGroup({
@@ -20,7 +22,9 @@ export class JoinComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isProduction = environment.production;
+  }
 
   onFileChange(event) {
     const file = event.target.files[0];

@@ -8,10 +8,8 @@ import { environment } from '../../../../environments/environment';
   templateUrl: './invite-user.component.html',
   styleUrls: ['./invite-user.component.scss']
 })
-export class InviteUserComponent implements OnInit {
+export class InviteUserComponent {
   constructor(public authService: AuthService, private store: StoreService) { }
-
-  ngOnInit() {}
 
   copyInviteToClipboard() {
     const uid = this.store.getState().uid;
