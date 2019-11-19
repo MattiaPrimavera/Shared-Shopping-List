@@ -57,9 +57,19 @@ export class ShoppingComponent implements OnInit {
         return combineLatest([
           of(loggedInUser ? loggedInUser.uid : null),
           this.handleDeeplinks()
-        ]).pipe(switchMap(([userUid, deeplinkUid]) => this.setupDatabase(userUid, deeplinkUid)))
+        ]).pipe(switchMap(([userUid, deeplinkUid]) => {
+          console.log(`UserUid ${userUid}, deeplink ${deeplinkUid}`)
+          if (!userUid && !deeplinkUid) return of(null)
+          return this.setupDatabase(userUid, deeplinkUid)
+        }))
       })
     )
+
+    this.authService.user.subscribe(user => {
+      if (!this.items) {
+        this.items = this.setupDatabase(user.uid, null);
+      }
+    })
   }
 
   signInAnonymously() {
