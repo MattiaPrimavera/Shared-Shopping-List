@@ -30,12 +30,12 @@ export class ChatComponent implements AfterViewInit {
       const state = this.store.getState();
       if (!state) throw 'Missing state';
 
-      const uid = state.uid;
-      if (!uid) throw 'Missing uid';
+      this.uid = state.uid;
+      if (!this.uid) throw 'Missing uid';
 
       const joinUserUid = state.joinUserUid;
-      console.log(`Chat uid: ${uid}`)
-      this.chatService.setupDatabase(joinUserUid || uid);
+      console.log(`Chat uid (joinUserUid): ${joinUserUid}, myUid: ${this.uid}`)
+      this.chatService.setupDatabase(joinUserUid || this.uid);
       this.messages = this.chatService.list();
     } catch (err) {
       this.router.navigate(['shopping'])
@@ -43,9 +43,14 @@ export class ChatComponent implements AfterViewInit {
   }
 
   async sendMessage(message: ChatMessage) {
-    const state = this.store.getState();
-    message.uid = state.uid;
-    this.chatService.add(message);
+    try {
+      const state = this.store.getState();
+      message.uid = state.uid;
+      this.chatService.add(message);
+      this.newMessageForm.reset();
+    } catch (err) {
+      console.error(`[chat] sendMessage`, err)
+    }
   }
 
   async onSubmit() {

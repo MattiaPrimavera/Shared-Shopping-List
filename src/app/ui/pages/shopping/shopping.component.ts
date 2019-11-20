@@ -173,8 +173,11 @@ export class ShoppingComponent implements OnInit {
   }
 
   openMyShoppingList() {
-    const { uid } = this.store.getState();
-    this.swichDatabase(uid);
+    const state = this.store.getState();
+    state.joinUserUid = null;
+    this.store.setState(state);
+
+    this.swichDatabase(state.uid);
     this.snackbarService.openSnackBar('Back to my shopping list', 'OPEN');
   }
 
