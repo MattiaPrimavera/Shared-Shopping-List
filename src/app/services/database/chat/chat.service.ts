@@ -16,7 +16,6 @@ export class ChatMessage {
 })
 export class ChatService extends BaseService<ChatMessage> {
   sourceUid: string;
-  destUid: string;
   messages: Observable<ChatMessage[]>
 
   constructor(
@@ -35,12 +34,5 @@ export class ChatService extends BaseService<ChatMessage> {
   setupDatabase(uid: string) {
     this.friendsService.setupDatabase(uid);
     this.ref = this.db.list<ChatMessage>(`chat/${uid}`);
-    this.friendsService.get()
-      .subscribe(friend => {
-        if (friend) {
-          this.destUid = friend.uid;
-          console.log(`[items.service] fetching chat/${uid}`);
-        }
-      })
   }
 }
