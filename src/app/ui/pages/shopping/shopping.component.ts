@@ -174,11 +174,15 @@ export class ShoppingComponent implements OnInit {
 
   openMyShoppingList() {
     const state = this.store.getState();
-    state.joinUserUid = null;
-    this.store.setState(state);
+    if (!state.joinUserUid || (state.joinUserUid === state.uid)) {
+      this.snackbarService.openSnackBar('Already seeing your shopping list', 'OPEN');
+    } else {
+      state.joinUserUid = null;
+      this.store.setState(state);
 
-    this.swichDatabase(state.uid);
-    this.snackbarService.openSnackBar('Back to my shopping list', 'OPEN');
+      this.swichDatabase(state.uid);
+      this.snackbarService.openSnackBar('Back to my shopping list', 'OPEN');
+    }
   }
 
   async deleteAll() {
