@@ -1,12 +1,14 @@
 p {
-    font-size: 12px;
+    font-size: 12pt;
+    width: 100%;
+    text-align: center;
 }
 
-.center {
-    width: 40%;
-    margin-left: 10%;
+button {
+    margin-left: 5%;
+    width: 90%;
 }
 
-.container {
-    padding: 2%;
+#qr-code {
+    text-align: center;
 }

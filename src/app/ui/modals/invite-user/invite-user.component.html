@@ -1,10 +1,10 @@
-<div class="container center">
+<div class="container">
     <div *ngIf="authService.user | async as user">
         <button mat-raised-button color="primary" (click)="copyInviteToClipboard()">Copy invite to Clipboard</button>
         <p>or Scan the QRCode</p>
 
         <p>{{ user.uid }}</p>
-        <div>
+        <div id="qr-code">
             <qr-code [value]="user.uid" [size]="150"></qr-code>
         </div>
     </div>
