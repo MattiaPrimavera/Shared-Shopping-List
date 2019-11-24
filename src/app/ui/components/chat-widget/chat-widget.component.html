@@ -10,8 +10,12 @@
                 width="50"
                 alt="Avatar"
                 [class]="isMyMessage(message) ? 'left' : 'right'">
-            <p id="message" [class]="isMyMessage(message) ? 'left' : 'right'">{{ message?.text }}</p>
+            <p id="message"
+                [class]="isMyMessage(message) ? 'left' : 'right'"
+            >{{ message?.text }}</p>
             <span [class]="isMyMessage(message) ? 'time-message right' : 'time-guest left'">11:00</span>
         </div>
     </div>
+
+    <div id="divider"></div>
 </div>

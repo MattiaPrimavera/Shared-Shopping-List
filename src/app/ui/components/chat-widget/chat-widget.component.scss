@@ -14,12 +14,27 @@
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
-    width: 60%;
+    width: 85%;
     padding: 10;
+
+    span {
+        font-size: 2vw;
+    }
+
+    p {
+        font-size: 3vw;
+        color: #673ab7;
+        overflow-wrap: break-word;
+        width: 80%;
+    }
+
+    p.right {
+        color: black;
+    }
 
     img {
         float: left;
-        max-width: 60px;
+        max-width: 30px;
         width: 100%;
         margin-right: 20px;
         border-radius: 50%;
@@ -50,4 +65,13 @@
 
 .time-message {
     color: #999;
+}
+
+#divider {
+    visibility: hidden;
+    float: left;
+    padding: 10px;
+    margin: 40px 0;
+    width: 85%;
+    overflow-wrap: break-word;
 }
