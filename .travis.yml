@@ -11,8 +11,9 @@ cache:
 
 install:
   - npm ci
-
+  - npm i npx
 script:
+  - sh scripts/generate-icon-and-splash.sh
   - npm run build:prod:github-pages && sh scripts/handle-github-pages-error-page.sh
 
 deploy:
