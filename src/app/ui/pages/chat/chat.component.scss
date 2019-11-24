@@ -8,6 +8,14 @@ app-chat-toolbar {
     height: 100%;
     padding-top: 15%;
 
+    mat-spinner {
+        width: 20%;
+        height: 20%;
+        position: absolute;
+        top: 40%;
+        margin-left: 40%;
+    }
+
     form {
         position: fixed;
         bottom: 0;

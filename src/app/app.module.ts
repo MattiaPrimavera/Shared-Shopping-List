@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AddItemComponent } from './ui/components/add-item/component/add-item.component';
@@ -89,6 +90,7 @@ import { ConfirmationDialogComponent } from './ui/modals/confirmation-dialog/con
     MatMenuModule,
     MatBottomSheetModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     MatToolbarModule,
     QRCodeModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
