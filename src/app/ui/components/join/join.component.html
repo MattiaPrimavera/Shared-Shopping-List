@@ -1,5 +1,5 @@
 <h2>Join shopping</h2>
-<input type="file" class="custom-file-input" accept="image/*" (change)="onFileChange($event)">
+<input type="file" class="custom-file-input" capture="camera" accept="image/*" (change)="onFileChange($event)">
 
 <ng-container *ngIf="!isProduction">
     <p>or insert invitation ID</p>
